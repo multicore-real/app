@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ENG">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette Bank</title>
+    <link href="CSS/style.css" rel="stylesheet" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+            integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="color-maker">
+        <label for="color-block-maker">
+            <input id="color-block-maker" value="#585757" type="color">
+        </label>
+        <br>
+        <label for="color-hex-maker">
+            <input placeholder="#ffffffff" spellcheck="false" value="#" maxlength="7" id="color-hex-maker">
+        </label>
+        <br>
+        <button id="done-btn" onclick="doneclick()">Done</button>
+    </div>
+
+    <div id="menu">
+        <img id="home-btn" src="icons/home.png" alt="home-btn">
+        <button class="presets" id="preset1">preset 1</button>
+        <button class="presets" id="preset2">preset 2</button>
+        <button class="presets" id="preset3">preset 3</button>
+        <button class="presets" id="preset4">preset 4</button>
+        <label>
+            <input class="presetname" placeholder="Text" spellcheck="false" type="text" maxlength="15">
+        </label>
+        <img id="list-button" src="icons/list.svg" alt="list-btn">
+    </div>
+    <div id="sidemenu">
+        <div class="center">
+            <div id="preset1-color-div" class="center presets-color-div">
+                <div id="color-wrap1">
+                </div>
+            </div>
+            <div id="preset2-color-div" class="center presets-color-div">
+                <div id="color-wrap2">
+                </div>
+            </div>
+            <div id="preset3-color-div" class="center presets-color-div">
+                <div id="color-wrap3">
+                </div>
+            </div>
+            <div id="preset4-color-div" class="center presets-color-div">
+                <div id="color-wrap4">
+                </div>
+            </div>
+            <button id="add-btn"><img src="icons/pluss.svg" alt="add-btn"></button>
+            <p id="chosep">chose preset</p>
+        </div>
+    </div>
+    <img id="edit-btn" src="icons/edit.svg" alt="edit-btn">
+
+    <div id="editing-wrapper">
+        <div id="editing-div">
+            <p id="editing-text">You can now edit and drag colors</p>
+            <img id="exit-btn" src="icons/x.svg" alt="exit-btn" onclick="removeEdit()">
+        </div>
+    </div>
+
+    <div id="copied-wrapper">
+        <div id="copied-div" role="alert">
+            <p id="copied-text">Successfully copied</p>
+        </div>
+    </div>
+
+    <div id="background-div1" class="background-div presets-color-div">
+        <div id="background1" class="background">
+        </div>
+    </div>
+    <div id="background-div2" class="background-div presets-color-div">
+        <div id="background2" class="background">
+        </div>
+    </div>
+    <div id="background-div3" class="background-div presets-color-div">
+        <div id="background3" class="background">
+        </div>
+    </div>
+    <div id="background-div4" class="background-div presets-color-div">
+        <div id="background4" class="background">
+        </div>
+    </div>
+    <div id="backgroundHide" class="background">
+    </div>
+    <script src="JS/Presets.js"></script>
+</body>
+</html>
