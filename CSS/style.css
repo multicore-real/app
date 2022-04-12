@@ -131,6 +131,21 @@ button:hover {
     filter: invert(12%) sepia(74%) saturate(4881%) hue-rotate(351deg) brightness(100%) contrast(106%);
 }
 
+#exit-btn-maker {
+    position: absolute;
+    filter: invert(87%) sepia(0%) saturate(485%) hue-rotate(156deg) brightness(94%) contrast(76%);
+    align-items: center;
+    margin: 15px 15px auto auto;
+    height: 34px;
+    aspect-ratio: 1;
+    right: 1px;
+    cursor: pointer;
+}
+
+#exit-btn-maker:hover {
+    filter: invert(12%) sepia(74%) saturate(4881%) hue-rotate(351deg) brightness(100%) contrast(106%);
+}
+
 #menu {
     background-color: white;
     z-index: 2;
