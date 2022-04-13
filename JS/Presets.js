@@ -114,13 +114,16 @@ presetname.change(function () {
 let css = '#reset-btn:hover {transform: rotate(180deg)}'
 let style = document.createElement('style');
 
-preset1.click(function () {
+$(".presets").click(function () {
     $("#reset-btn").css({"cursor": "pointer"})
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
         style.appendChild(document.createTextNode(css));
     }
+})
+
+preset1.click(function () {
     document.getElementsByTagName('head')[0].appendChild(style);
     $("#reset-btn").hover({"transform": "rotate(180deg)"})
     $('#editing-wrapper').fadeOut(300)
@@ -146,12 +149,6 @@ preset1.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset2.click(function () {
-    $("#reset-btn").css({"cursor": "pointer"})
-    if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-    } else {
-        style.appendChild(document.createTextNode(css));
-    }
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
@@ -175,12 +172,6 @@ preset2.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset3.click(function () {
-    $("#reset-btn").css({"cursor": "pointer"})
-    if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-    } else {
-        style.appendChild(document.createTextNode(css));
-    }
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
@@ -204,12 +195,6 @@ preset3.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset4.click(function () {
-    $("#reset-btn").css({"cursor": "pointer"})
-    if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-    } else {
-        style.appendChild(document.createTextNode(css));
-    }
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
