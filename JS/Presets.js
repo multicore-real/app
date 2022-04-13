@@ -111,11 +111,11 @@ presetname.change(function () {
     }
 });
 
+let css = '#reset-btn:hover {transform: rotate(180deg)}'
+let style = document.createElement('style');
+
 preset1.click(function () {
     $("#reset-btn").css({"cursor": "pointer"})
-    let css = '#reset-btn:hover {transform: rotate(180deg)}'
-    let style = document.createElement('style');
-
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
@@ -147,9 +147,6 @@ preset1.click(function () {
 });
 preset2.click(function () {
     $("#reset-btn").css({"cursor": "pointer"})
-    let css = '#reset-btn:hover {transform: rotate(180deg)}'
-    let style = document.createElement('style');
-
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
@@ -179,9 +176,6 @@ preset2.click(function () {
 });
 preset3.click(function () {
     $("#reset-btn").css({"cursor": "pointer"})
-    let css = '#reset-btn:hover {transform: rotate(180deg)}'
-    let style = document.createElement('style');
-
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
@@ -211,9 +205,6 @@ preset3.click(function () {
 });
 preset4.click(function () {
     $("#reset-btn").css({"cursor": "pointer"})
-    let css = '#reset-btn:hover {transform: rotate(180deg)}'
-    let style = document.createElement('style');
-
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
     } else {
