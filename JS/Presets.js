@@ -54,7 +54,7 @@ list.click(function () {
         })
         $(".color-div").css({
             "width": "100%",
-            "border-bottom": "solid var(--border) 3px",
+            "border-bottom": "thin solid white",
         })
         colormaker.css("display", "none")
         sidemenu.css({
