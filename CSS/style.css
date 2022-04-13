@@ -87,6 +87,52 @@ button:hover {
     outline: none;
 }
 
+#done-btn-reset {
+    font-size: 27px;
+    font-family: Sora, Helvetica, sans-serif;
+    color: var(--grey);
+    margin-top: 25%;
+    transition: ease-in 0.1s;
+    border: solid 3px var(--border);
+    background-color: white;
+    border-radius: 20px;
+    padding: 0 50px;
+    height: 45px;
+    display: inline-block;
+}
+
+#done-btn-reset:hover {
+    transform: scale(1.02);
+    background-color: #f6f6f6;
+}
+
+#done-btn-reset:focus-visible {
+    outline: none;
+}
+
+#done-btn-reset-no {
+    font-size: 27px;
+    font-family: Sora, Helvetica, sans-serif;
+    color: var(--border);
+    margin-top: 25%;
+    transition: ease-in 0.1s;
+    border: solid 3px var(--border);
+    background-color: #151f46;
+    border-radius: 20px;
+    padding: 0 50px;
+    height: 45px;
+    display: inline-block;
+}
+
+#done-btn-reset-no:hover {
+    transform: scale(1.02);
+    background-color: #0e142d;
+}
+
+#done-btn-reset-no:focus-visible {
+    outline: none;
+}
+
 .remove-btn {
     height: auto;
     padding: 0;
@@ -146,6 +192,31 @@ button:hover {
     filter: invert(12%) sepia(74%) saturate(4881%) hue-rotate(351deg) brightness(100%) contrast(106%);
 }
 
+#exit-btn-reset {
+    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    align-items: center;
+    margin: 10px 10px auto auto;
+    height: 35px;
+    aspect-ratio: 1;
+    float: right;
+    cursor: pointer;
+}
+
+#exit-btn-reset:hover {
+    filter: invert(12%) sepia(74%) saturate(4881%) hue-rotate(351deg) brightness(100%) contrast(106%);
+}
+
+#reset-btn {
+    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    margin: auto auto auto 5px;
+    position: absolute;
+    top: 10px;
+    height: 30px;
+    transition: 0.3s ease-out;
+    display: inline-block;
+}
+
+
 #menu {
     background-color: white;
     z-index: 2;
@@ -191,22 +262,26 @@ button:hover {
 
 @media only screen and (max-width: 1150px) {
     .presetname {
-        margin-top: -15px;
+        margin-top: -10px;
     }
 
     #menu {
-        height: 70px;
+        height: 75px;
     }
 
     #list-button {
         top: -25%;
     }
 
+    #home-btn {
+        top: 12%;
+    }
+
     #edit-btn {
-        top: 80px;
+        top: 85px;
     }
     .background{
-        top: 70px !important;
+        top: 75px !important;
     }
 }
 
@@ -239,6 +314,25 @@ button:hover {
     z-index: 7;
     position: absolute;
     height: 75vh;
+    border-radius: 20px;
+    aspect-ratio: 1;
+    width: auto;
+}
+
+
+#reset-error {
+    display: none;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 3px solid var(--border);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 7;
+    position: absolute;
+    height: 50vh;
     border-radius: 20px;
     aspect-ratio: 1;
     width: auto;

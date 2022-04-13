@@ -79,6 +79,10 @@ $("#color-hex-maker").change(function () {
     $("#color-block-maker").val(colorhexmaker.val())
 })
 
+$("#reset-btn").click( function () {
+    if (x > 0) {$('#reset-error').css('display', 'inline')}
+})
+
 
 homebtn.click(function () {
     colormaker.css("display", "none")
@@ -91,19 +95,34 @@ homebtn.click(function () {
 presetname.change(function () {
     if (x === 1) {
         preset1.html(presetname.val())
+        localStorage.setItem("preset1", presetname.val())
     }
     if (x === 2) {
         preset2.html(presetname.val())
+        localStorage.setItem("preset2", presetname.val())
     }
     if (x === 3) {
         preset3.html(presetname.val())
+        localStorage.setItem("preset3", presetname.val())
     }
     if (x === 4) {
         preset4.html(presetname.val())
+        localStorage.setItem("preset4", presetname.val())
     }
 });
 
 preset1.click(function () {
+    $("#reset-btn").css({"cursor": "pointer"})
+    let css = '#reset-btn:hover {transform: rotate(180deg)}'
+    let style = document.createElement('style');
+
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    document.getElementsByTagName('head')[0].appendChild(style);
+    $("#reset-btn").hover({"transform": "rotate(180deg)"})
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
@@ -127,6 +146,15 @@ preset1.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset2.click(function () {
+    $("#reset-btn").css({"cursor": "pointer"})
+    let css = '#reset-btn:hover {transform: rotate(180deg)}'
+    let style = document.createElement('style');
+
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
@@ -150,6 +178,15 @@ preset2.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset3.click(function () {
+    $("#reset-btn").css({"cursor": "pointer"})
+    let css = '#reset-btn:hover {transform: rotate(180deg)}'
+    let style = document.createElement('style');
+
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
@@ -173,6 +210,15 @@ preset3.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset4.click(function () {
+    $("#reset-btn").css({"cursor": "pointer"})
+    let css = '#reset-btn:hover {transform: rotate(180deg)}'
+    let style = document.createElement('style');
+
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
@@ -249,6 +295,7 @@ function doneclick() {
                 item.number = i + 1;
                 colorp1N = i + 1;
             })
+
             localStorage.setItem("colorp1N", colorp1N)
 
             $("#color-wrap1").append(" <div class=\'color-div " + colorp1[colorp1.length - 1].deleteId + "\'>\n" +
@@ -420,6 +467,18 @@ function doneclick() {
 }
 
 window.onload = function () {
+    if (localStorage["preset1"]) {
+        preset1.html(localStorage.getItem("preset1"))
+    }
+    if (localStorage["preset2"]) {
+        preset2.html(localStorage.getItem("preset2"))
+    }
+    if (localStorage["preset3"]) {
+        preset3.html(localStorage.getItem("preset3"))
+    }
+    if (localStorage["preset4"]) {
+        preset4.html(localStorage.getItem("preset4"))
+    }
     if (localStorage["colorp1N"]) {
         for (let i = 0; i < JSON.parse(localStorage["colorp1N"]); i++) {
             let item = JSON.parse(localStorage["ColorPreset1"])[i]
@@ -617,9 +676,6 @@ $("#edit-btn").click(function editingF() {
             $("#edit-btn").css("filter", "invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%)")
             $(".color-canvas-div").css("cursor", "move")
             $('#editing-wrapper').fadeIn(300)
-            $(".color-canvas-div").dblclick(function () {
-                $(".color-canvas-div").type("color")
-            })
             edit = 1
         } else {
             if (edit === 1) {
@@ -631,6 +687,86 @@ $("#edit-btn").click(function editingF() {
         }
     }
 })
+
+function resetPreset() {
+    $('#reset-error').css('display', 'none')
+    if (x === 1) {
+        preset1.html("preset1")
+        colorp1 = []
+        localStorage.removeItem("colorp1N")
+        localStorage.removeItem("preset1")
+        localStorage.removeItem("ColorPreset1")
+
+        let containerwrap = document.getElementById("color-wrap1");
+        let elementswrap = containerwrap.getElementsByClassName("color-div");
+        while (elementswrap[0]) {
+            elementswrap[0].parentNode.removeChild(elementswrap[0]);
+        }
+
+        let container = document.getElementById("background1");
+        let elements = container.getElementsByClassName("color-canvas-div");
+        while (elements[0]) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+    if (x === 2) {
+        preset2.html("preset2")
+        colorp2 = []
+        localStorage.removeItem("colorp2N")
+        localStorage.removeItem("preset2")
+        localStorage.removeItem("ColorPreset2")
+
+        let containerwrap = document.getElementById("color-wrap2");
+        let elementswrap = containerwrap.getElementsByClassName("color-div");
+        while (elementswrap[0]) {
+            elementswrap[0].parentNode.removeChild(elementswrap[0]);
+        }
+
+        let container = document.getElementById("background2");
+        let elements = container.getElementsByClassName("color-canvas-div");
+        while (elements[0]) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+    if (x === 3) {
+        preset3.html("preset3")
+        colorp3 = []
+        localStorage.removeItem("colorp3N")
+        localStorage.removeItem("preset3")
+        localStorage.removeItem("ColorPreset3")
+
+        let containerwrap = document.getElementById("color-wrap3");
+        let elementswrap = containerwrap.getElementsByClassName("color-div");
+        while (elementswrap[0]) {
+            elementswrap[0].parentNode.removeChild(elementswrap[0]);
+        }
+
+        let container = document.getElementById("background3");
+        let elements = container.getElementsByClassName("color-canvas-div");
+        while (elements[0]) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+    if (x === 4) {
+        preset4.html("preset4")
+        colorp4 = []
+        localStorage.removeItem("colorp4N")
+        localStorage.removeItem("preset4")
+        localStorage.removeItem("ColorPreset4")
+
+        let containerwrap = document.getElementById("color-wrap4");
+        let elementswrap = containerwrap.getElementsByClassName("color-div");
+        while (elementswrap[0]) {
+            elementswrap[0].parentNode.removeChild(elementswrap[0]);
+        }
+
+        let container = document.getElementById("background4");
+        let elements = container.getElementsByClassName("color-canvas-div");
+        while (elements[0]) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
