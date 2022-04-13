@@ -121,10 +121,11 @@ $(".presets").click(function () {
     } else {
         style.appendChild(document.createTextNode(css));
     }
+    document.getElementsByTagName('head')[0].appendChild(style);
 })
 
 preset1.click(function () {
-    document.getElementsByTagName('head')[0].appendChild(style);
+
     $("#reset-btn").hover({"transform": "rotate(180deg)"})
     $('#editing-wrapper').fadeOut(300)
     $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
