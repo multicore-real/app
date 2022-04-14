@@ -1,5 +1,8 @@
 :root {
-    --grey: #191919;
+    --black: #232323;
+    --thinblack: #2c2c2c;
+    --grey: #bbbbbb;
+    --almostwhite: #efefef;
     --border: #836be3;
     --purple: #5e3be8;
     --darkerpurple: #5333d2;
@@ -10,18 +13,18 @@ body {
     margin: 0;
     left: 0;
     top: 0;
-    background-color: var(--grey);
+    background-color: var(--black);
     overflow: hidden;
 }
 
 ::placeholder {
     opacity: 1;
-    color: white;
+    color: var(--grey);
 }
 
 
 #home-btn {
-    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
     position: relative;
     top: 20%;
     bottom: 0;
@@ -30,8 +33,12 @@ body {
     cursor: pointer;
 }
 
+#home-btn:hover {
+    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
+}
+
 #list-button {
-    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
     float: right;
     position: relative;
     top: 13%;
@@ -39,6 +46,10 @@ body {
     margin: auto 15px auto 10px;
     height: 33px;
     cursor: pointer;
+}
+
+#list-button:hover {
+    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
 }
 
 #add-btn {
@@ -74,11 +85,11 @@ button:hover {
 #done-btn {
     font-size: 27px;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     margin-top: 20vh;
     transition: ease-in 0.1s;
-    border: solid 3px var(--grey);
-    background-color: var(--grey);
+    border: solid 3px var(--purple);
+    background-color: var(--purple);
     border-radius: 20px;
     padding: 0 120px;
     height: 45px;
@@ -86,7 +97,8 @@ button:hover {
 
 #done-btn:hover {
     transform: scale(1.02);
-    background-color: #111111;
+    background-color: var(--darkerpurple);
+    border: solid 3px var(--darkerpurple);
 }
 
 #done-btn:focus-visible {
@@ -96,21 +108,21 @@ button:hover {
 #done-btn-reset {
     font-size: 27px;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--black);
     margin-top: 25%;
     transition: ease-in 0.1s;
-    border: solid 3px var(--grey);
-    background-color: var(--grey);
-    border-radius: 20px;
+    border: solid 3px var(--almostwhite);
+    background-color: var(--almostwhite);
+    border-radius: 10px;
     padding: 0 50px;
     height: 45px;
     display: inline-block;
 }
 
 #done-btn-reset:hover {
-    color: white;
     transform: scale(1.02);
-    background-color: #111111;
+    border: solid 3px var(--grey);
+    background-color: var(--grey);
 }
 
 #done-btn-reset:focus-visible {
@@ -120,21 +132,22 @@ button:hover {
 #done-btn-reset-no {
     font-size: 27px;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     margin-top: 25%;
     transition: ease-in 0.1s;
-    border: solid 3px var(--grey);
-    background-color: var(--grey);
-    border-radius: 20px;
+    border: solid 3px var(--purple);
+    background-color: var(--purple);
+    border-radius: 10px;
     padding: 0 50px;
     height: 45px;
     display: inline-block;
 }
 
 #done-btn-reset-no:hover {
-    color: white;
+    color: var(--grey);
     transform: scale(1.02);
-    background-color: #111111;
+    background-color: var(--darkerpurple);
+    border: solid 3px var(--darkerpurple);
 }
 
 #done-btn-reset-no:focus-visible {
@@ -154,7 +167,7 @@ button:hover {
 
 .remove-btn img {
     height: 28px;
-    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
 }
 
 .remove-btn img:hover {
@@ -162,7 +175,7 @@ button:hover {
 }
 
 #edit-btn {
-    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    filter: invert(75%) sepia(0%) saturate(0%) hue-rotate(166deg) brightness(98%) contrast(82%);
     position: absolute;
     right: 10px;
     top: 60px;
@@ -172,7 +185,7 @@ button:hover {
 }
 
 #exit-btn {
-    filter: invert(87%) sepia(0%) saturate(485%) hue-rotate(156deg) brightness(94%) contrast(76%);
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
     align-items: center;
     margin: auto 10px auto auto;
     height: 28px;
@@ -187,7 +200,7 @@ button:hover {
 
 #exit-btn-maker {
     position: absolute;
-    filter: invert(87%) sepia(0%) saturate(485%) hue-rotate(156deg) brightness(94%) contrast(76%);
+    filter: invert(100%) sepia(3%) saturate(10%) hue-rotate(70deg) brightness(102%) contrast(103%);
     align-items: center;
     margin: 15px 15px auto auto;
     height: 34px;
@@ -201,7 +214,7 @@ button:hover {
 }
 
 #exit-btn-reset {
-    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    filter: invert(100%) sepia(3%) saturate(10%) hue-rotate(70deg) brightness(102%) contrast(103%);
     align-items: center;
     margin: 10px 10px auto auto;
     height: 35px;
@@ -215,7 +228,7 @@ button:hover {
 }
 
 #reset-btn {
-    filter: invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%);
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
     margin: auto auto auto 5px;
     position: absolute;
     top: 10px;
@@ -226,7 +239,7 @@ button:hover {
 
 
 #menu {
-    background-color: var(--grey);
+    background-color: #3a3a3a;
     z-index: 2;
     vertical-align: middle;
     position: relative;
@@ -234,7 +247,6 @@ button:hover {
     width: 100vw;
     left: 0;
     top: 0;
-    border-bottom: thin solid #BEBEBE;
 }
 
 .presets {
@@ -244,14 +256,19 @@ button:hover {
     font-size: 17px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     display: inline-block;
     padding: 15px 15px;
     margin: 0;
 }
 
+.presets:hover {
+    color: var(--almostwhite);
+}
+
 #focused {
-    border-bottom: 3px solid var(--darkerpurple);
+    color: var(--border);
+    border-bottom: 3px solid var(--border);
     padding-bottom: 3px;
 }
 
@@ -262,7 +279,7 @@ button:hover {
     font-weight: 300;
     margin: -40px auto;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     text-align: center;
     background-color: transparent;
     border: none;
@@ -302,10 +319,9 @@ button:hover {
     overflow-x: scroll;
     justify-content: center;
     transition: ease 700ms;
-    background-color: var(--grey);
+    background-color: var(--thinblack);
     z-index: 3;
-    height: calc(100vh - 53px);
-    border-right: thin solid #BEBEBE;
+    height: calc(100vh - 50px);
     width: 200px;
 }
 
@@ -331,9 +347,9 @@ button:hover {
 #reset-error {
     display: none;
     text-align: center;
-    background-color: rgba(83, 51, 210, 0.6);
-    border: 3px solid black;
-    color: white;
+    background-color: var(--black);
+    border: none;
+    color: var(--grey);
     left: 0;
     right: 0;
     top: 0;
@@ -342,7 +358,7 @@ button:hover {
     z-index: 7;
     position: absolute;
     height: 50vh;
-    border-radius: 20px;
+    border-radius: 10px;
     aspect-ratio: 1;
     width: auto;
 }
@@ -355,7 +371,7 @@ button:hover {
     margin-top: 7vh;
     padding: 0;
     border-radius: 18px;
-    border: 3px solid var(--grey);
+    border: 3px solid var(--black);
 }
 
 #color-block-maker::-webkit-color-swatch {
@@ -380,10 +396,10 @@ button:hover {
     font-size: 25px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     text-align: center;
     background-color: transparent;
-    border: 3px solid var(--grey);
+    border: 3px solid var(--black);
 }
 
 .color-canvas-div {
@@ -391,17 +407,23 @@ button:hover {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
-    z-index: 2;
+    z-index: 3;
     cursor: pointer;
     display: inline-block;
     position: relative;
     padding: 0;
     height: 135px;
-    background-color: var(--grey);
+    background-color: var(--black);
     width: 150px;
-    border: solid #BEBEBE thin;
     border-radius: 10px;
     text-align: center;
+}
+
+#2ww {
+    height: 135px;
+    width: 150px;
+    z-index: 4;
+    position: absolute;
 }
 
 .color-block-canvas {
@@ -440,7 +462,7 @@ button:hover {
     margin: 10px 0 5px 0;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     text-align: center;
     background-color: transparent;
     border: none;
@@ -452,7 +474,6 @@ button:hover {
     padding: 20px 0;
     height: fit-content;
     width: 100%;
-    border-bottom: thin solid #BEBEBE;
     vertical-align: center;
 }
 
@@ -478,7 +499,7 @@ button:hover {
     font-size: 19px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     text-align: center;
     background-color: transparent;
     border: none;
@@ -494,14 +515,14 @@ button:hover {
     margin: 10px 0 0 0;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: var(--grey);
     text-align: center;
     background-color: transparent;
     border: none;
 }
 
 #chosep {
-    color: white;
+    color: var(--grey);
 }
 
 .center {
@@ -525,7 +546,7 @@ button:hover {
 }
 
 #delete-color {
-    color: white;
+    color: var(--grey);
     font-size: 27px;
 }
 
@@ -534,11 +555,11 @@ button:hover {
     top: 50px;
     z-index: 1;
     overflow: hidden;
-    background-image: radial-gradient(var(--border) 3px, transparent 3px);
-    background-color: var(--grey);
+    background-image: radial-gradient(var(--grey) 3px, transparent 3px);
+    background-color: var(--black);
     background-size: 40px 40px;
-    width: calc(100vw - 203px);
-    left: 203px;
+    width: calc(100vw - 200px);
+    left: 200px;
     height: calc(100vh - 50px);
     position: fixed;
     display: inline;
@@ -570,7 +591,7 @@ button:hover {
 }
 
 #copied-text {
-    color: white;
+    color: var(--black);
     font-size: 20px;
     font-weight: 300;
     height: fit-content;
@@ -586,6 +607,7 @@ button:hover {
     margin: auto;
     justify-content: center;
     vertical-align: middle;
+    opacity: 0;
 }
 
 #editing-div {
@@ -601,7 +623,7 @@ button:hover {
 
 #editing-text {
     display: inline-block;
-    color: white;
+    color: var(--grey);
     font-size: 20px;
     font-weight: 400;
     vertical-align: middle;
@@ -612,4 +634,16 @@ button:hover {
 
 .presets-color-div {
     display: none;
+}
+
+.overlay {
+    transition: 0.5s;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: #000000;
+    opacity:0;
+    z-index:4;
 }

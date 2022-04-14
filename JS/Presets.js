@@ -31,7 +31,7 @@ let oldInfo4 = JSON.parse(localStorage.getItem('ColorPreset4') || '[]');
 list.click(function () {
     if (liststatus === 0) {
         sidemenu.css({
-            "width": "calc(100vw - 3px)",
+            "width": "calc(100vw - 1px)",
         })
         addbtn.css({
             "position": "absolute",
@@ -79,8 +79,14 @@ $("#color-hex-maker").change(function () {
     $("#color-block-maker").val(colorhexmaker.val())
 })
 
+$(".overlay").hide();
+
 $("#reset-btn").click( function () {
-    if (x > 0) {$('#reset-error').css('display', 'inline')}
+    if (x > 0) {
+        $('#reset-error').css('display', 'inline')
+        $(".overlay").css('opacity', '0.7');;
+    }
+    
 })
 
 
@@ -111,10 +117,11 @@ presetname.change(function () {
     }
 });
 
-let css = '#reset-btn:hover {transform: rotate(180deg)}'
-let style = document.createElement('style');
+
 
 $(".presets").click(function () {
+    let css = '#reset-btn:hover {transform: rotate(180deg); filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%)}'
+    let style = document.createElement('style');
     $("#reset-btn").css({"cursor": "pointer"})
     if (style.styleSheet) {
         style.styleSheet.cssText = css;
@@ -125,10 +132,8 @@ $(".presets").click(function () {
 })
 
 preset1.click(function () {
-
-    $("#reset-btn").hover({"transform": "rotate(180deg)"})
-    $('#editing-wrapper').fadeOut(300)
-    $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
+    $('#editing-wrapper').css("opacity", "0")
+    $("#edit-btn").css({"cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -150,8 +155,8 @@ preset1.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset2.click(function () {
-    $('#editing-wrapper').fadeOut(300)
-    $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
+    $('#editing-wrapper').css("opacity", "0")
+    $("#edit-btn").css({"cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -173,8 +178,8 @@ preset2.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset3.click(function () {
-    $('#editing-wrapper').fadeOut(300)
-    $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
+    $('#editing-wrapper').css("opacity", "0")
+    $("#edit-btn").css({"cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -196,8 +201,8 @@ preset3.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset4.click(function () {
-    $('#editing-wrapper').fadeOut(300)
-    $("#edit-btn").css({"filter": "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)", "cursor": "pointer"})
+    $('#editing-wrapper').css("opacity", "0")
+    $("#edit-btn").css({"cursor": "pointer"})
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -260,9 +265,9 @@ function doneclick() {
                 number: 0,
                 id: Date.now(),
                 id2: Date.now() - 3000,
-                id3: Math.random(),
+                id3: Date.now() - 4000,
                 deleteId: Date.now() - 1000,
-                hex: colorhexmaker.val(),
+                hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
             }
@@ -276,7 +281,7 @@ function doneclick() {
             localStorage.setItem("colorp1N", colorp1N)
 
             $("#color-wrap1").append(" <div class=\'color-div " + colorp1[colorp1.length - 1].deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + colorp1[colorp1.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this);' class=\'remove-btn " + colorp1[colorp1.length - 1].number + "\'  id=\'" + colorp1[colorp1.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input maxlength=\"10\" onchange='updateName(this)' id='" + colorp1[colorp1.length - 1].name + "\' placeholder=\"Name\" class=\'color-side-input " + colorp1[colorp1.length - 1].number + "\'>\n" +
                 "            </label>\n" +
@@ -286,7 +291,7 @@ function doneclick() {
                 "        </div>")
 
             $("#background1").append(" " +
-                "         <div class=\'color-canvas-div " + colorp1[colorp1.length - 1].deleteId + "\' id=\'" + colorp1[colorp1.length - 1].id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\' onmousedown=\'clicking(this); findID(this)\'>\n" +
+                "         <div class=\'color-canvas-div " + colorp1[colorp1.length - 1].deleteId + "\' id=\'" + colorp1[colorp1.length - 1].id3 + "\' onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\' onmousedown=\'clicking(this); findID(this)\'>\n" +
                 "            <label>\n" +
                 "                <input maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + colorp1[colorp1.length - 1].name + "\'>\n" +
                 "            </label>\n" +
@@ -295,9 +300,9 @@ function doneclick() {
                 "            <p class=\'hex-canvas " + colorp1[colorp1.length - 1].id + "\' id=\'" + colorp1[colorp1.length - 1].id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + colorp1[colorp1.length - 1].id2).css("background-color", colorp1[colorp1.length - 1].hex)
-            $("." + colorp1[colorp1.length - 1].id).html(colorp1[colorp1.length - 1].hex)
-
+            $("." + colorp1[colorp1.length - 1].id2).css("background-color", colorp1[colorp1.length - 1].hexval)
+            $("." + colorp1[colorp1.length - 1].id).html(colorp1[colorp1.length - 1].hexval)
+            $("#" + colorp1[colorp1.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp1[colorp1.length - 1].hexval})
 
             localStorage.setItem('ColorPreset1', JSON.stringify(oldInfo1));
 
@@ -307,15 +312,15 @@ function doneclick() {
                 number: 0,
                 id: Date.now(),
                 id2: Date.now() - 3000,
-                id3: Math.random(),
+                id3: Date.now() - 4000,
                 deleteId: Date.now() - 1000,
-                hex: colorhexmaker.val(),
+                hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
             }
             colorp2.push(color)
             oldInfo2.push(color);
-            colorp2.forEach((item, i) => {
+            oldInfo2.forEach((item, i) => {
                 item.number = i + 1;
                 colorp2N = i + 1;
             });
@@ -323,7 +328,7 @@ function doneclick() {
             localStorage.setItem("colorp2N", colorp2N)
 
             $("#color-wrap2").append(" <div class=\'color-div " + colorp2[colorp2.length - 1].deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + colorp2[colorp2.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this);' class=\'remove-btn " + colorp2[colorp2.length - 1].number + "\' id=\'" + colorp2[colorp2.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input maxlength=\"10\" onchange='updateName(this)' id='" + colorp2[colorp2.length - 1].name + "\' placeholder=\"Name\" class=\'color-side-input " + colorp2[colorp2.length - 1].number + "\'>\n" +
                 "            </label>\n" +
@@ -342,8 +347,9 @@ function doneclick() {
                 "            <p class=\'hex-canvas " + colorp2[colorp2.length - 1].id + "\' id=\'" + colorp2[colorp2.length - 1].id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + colorp2[colorp2.length - 1].id2).css("background-color", colorp2[colorp2.length - 1].hex)
-            $("." + colorp2[colorp2.length - 1].id).html(colorp2[colorp2.length - 1].hex)
+            $("." + colorp2[colorp2.length - 1].id2).css("background-color", colorp2[colorp2.length - 1].hexval)
+            $("." + colorp2[colorp2.length - 1].id).html(colorp2[colorp2.length - 1].hexval)
+            $("#" + colorp2[colorp2.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp2[colorp2.length - 1].hexval})
             localStorage.setItem('ColorPreset2', JSON.stringify(oldInfo2));
         }
         if (x === 3) {
@@ -352,15 +358,15 @@ function doneclick() {
                 number: 0,
                 id: Date.now(),
                 id2: Date.now() - 3000,
-                id3: Math.random(),
+                id3: Date.now() - 4000,
                 deleteId: Date.now() - 1000,
-                hex: colorhexmaker.val(),
+                hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
             }
             colorp3.push(color)
             oldInfo3.push(color);
-            colorp3.forEach((item, i) => {
+            oldInfo3.forEach((item, i) => {
                 item.number = i + 1;
                 colorp3N = i + 1;
             });
@@ -368,7 +374,7 @@ function doneclick() {
             localStorage.setItem("colorp3N", colorp3N)
 
             $("#color-wrap3").append(" <div class=\'color-div " + colorp3[colorp3.length - 1].deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + colorp3[colorp3.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this);' class=\'remove-btn " + colorp3[colorp3.length - 1].number + "\'  id=\'" + colorp3[colorp3.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input maxlength=\"10\" onchange='updateName(this)' id='" + colorp3[colorp3.length - 1].name + "\' placeholder=\"Name\" class=\'color-side-input " + colorp3[colorp3.length - 1].number + "\'>\n" +
                 "            </label>\n" +
@@ -387,8 +393,9 @@ function doneclick() {
                 "            <p class=\'hex-canvas " + colorp3[colorp3.length - 1].id + "\' id=\'" + colorp3[colorp3.length - 1].id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + colorp3[colorp3.length - 1].id).html(colorp3[colorp3.length - 1].hex)
-            $("." + colorp3[colorp3.length - 1].id2).css("background-color", colorp3[colorp3.length - 1].hex)
+            $("." + colorp3[colorp3.length - 1].id).html(colorp3[colorp3.length - 1].hexval)
+            $("." + colorp3[colorp3.length - 1].id2).css("background-color", colorp3[colorp3.length - 1].hexval)
+            $("#" + colorp3[colorp3.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp3[colorp3.length - 1].hexval})
             localStorage.setItem('ColorPreset3', JSON.stringify(oldInfo3));
 
         }
@@ -398,15 +405,15 @@ function doneclick() {
                 number: 0,
                 id: Date.now(),
                 id2: Date.now() - 3000,
-                id3: Math.random(),
+                id3: Date.now() - 4000,
                 deleteId: Date.now() - 1000,
-                hex: colorhexmaker.val(),
+                hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
             }
             colorp4.push(color)
             oldInfo4.push(color);
-            colorp4.forEach((item, i) => {
+            oldInfo4.forEach((item, i) => {
                 item.number = i + 1;
                 colorp4N = i + 1;
             });
@@ -414,7 +421,7 @@ function doneclick() {
             localStorage.setItem("colorp4N", colorp4N)
 
             $("#color-wrap4").append(" <div class=\'color-div " + colorp4[colorp4.length - 1].deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + colorp4[colorp4.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this);' class=\'remove-btn " + colorp4[colorp4.length - 1].number + "\'  id=\'" + colorp4[colorp4.length - 1].deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input maxlength=\"10\" onchange='updateName(this)' id='" + colorp4[colorp4.length - 1].name + "\' placeholder=\"Name\" class=\'color-side-input " + colorp4[colorp4.length - 1].number + "\'>\n" +
                 "            </label>\n" +
@@ -433,8 +440,9 @@ function doneclick() {
                 "            <p class=\'hex-canvas " + colorp4[colorp4.length - 1].id + "\' id=\'" + colorp4[colorp4.length - 1].id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + colorp4[colorp4.length - 1].id).html(colorp4[colorp4.length - 1].hex)
-            $("." + colorp4[colorp4.length - 1].id2).css("background-color", colorp4[colorp4.length - 1].hex)
+            $("." + colorp4[colorp4.length - 1].id).html(colorp4[colorp4.length - 1].hexval)
+            $("." + colorp4[colorp4.length - 1].id2).css("background-color", colorp4[colorp4.length - 1].hexval)
+            $("#" + colorp4[colorp4.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp4[colorp4.length - 1].hexval})
             localStorage.setItem('ColorPreset4', JSON.stringify(oldInfo4));
 
         }
@@ -460,7 +468,7 @@ window.onload = function () {
         for (let i = 0; i < JSON.parse(localStorage["colorp1N"]); i++) {
             let item = JSON.parse(localStorage["ColorPreset1"])[i]
             $("#color-wrap1").append(" <div class=\'color-div " + item.deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this)' class=\'remove-btn " + item.number + "\' id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" onchange='updateName(this)' id='" + item.name + "\' placeholder=\"Name\" class=\'color-side-input " + item.number + "\'>\n" +
                 "            </label>\n" +
@@ -479,15 +487,16 @@ window.onload = function () {
                 "            <p class=\'hex-canvas " + item.id + "\' id=\'" + item.id + "\'>hex</p>\n" +
                 "        </div>")
             
-            $("." + item.id).html(item.hex)
-            $("." + item.id2).css("background-color", item.hex)
+            $("." + item.id).html(item.hexval)
+            $("." + item.id2).css("background-color", item.hexval)
+            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
     if (localStorage["colorp2N"]) {
         for (let i = 0; i < JSON.parse(localStorage["colorp2N"]); i++) {
             let item = JSON.parse(localStorage["ColorPreset2"])[i]
             $("#color-wrap2").append(" <div class=\'color-div " + item.deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this)' class=\'remove-btn " + item.number + "\'  id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" onchange='updateName(this)' id='" + item.name + "\' placeholder=\"Name\" class=\'color-side-input " + item.number + "\'>\n" +
                 "            </label>\n" +
@@ -506,15 +515,16 @@ window.onload = function () {
                 "            <p class=\'hex-canvas " + item.id + "\' id=\'" + item.id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + item.id).html(item.hex)
-            $("." + item.id2).css("background-color", item.hex)
+            $("." + item.id).html(item.hexval)
+            $("." + item.id2).css("background-color", item.hexval)
+            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
     if (localStorage["colorp3N"]) {
         for (let i = 0; i < JSON.parse(localStorage["colorp3N"]); i++) {
             let item = JSON.parse(localStorage["ColorPreset3"])[i]
             $("#color-wrap3").append(" <div class=\'color-div " + item.deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this)' class=\'remove-btn " + item.number + "\' id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" onchange='updateName(this)' id='" + item.name + "\' placeholder=\"Name\" class=\'color-side-input " + item.number + "\'>\n" +
                 "            </label>\n" +
@@ -533,15 +543,16 @@ window.onload = function () {
                 "            <p class=\'hex-canvas " + item.id + "\' id=\'" + item.id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + item.id).html(item.hex)
-            $("." + item.id2).css("background-color", item.hex)
+            $("." + item.id).html(item.hexval)
+            $("." + item.id2).css("background-color", item.hexval)
+            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
     if (localStorage["colorp4N"]) {
         for (let i = 0; i < JSON.parse(localStorage["colorp4N"]); i++) {
             let item = JSON.parse(localStorage["ColorPreset4"])[i]
             $("#color-wrap4").append(" <div class=\'color-div " + item.deleteId + "\'>\n" +
-                " <button onclick='remove(this);' class=\'remove-btn\'  id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
+                " <button onclick='remove(this);' class=\'remove-btn " + item.number + "\' id=\'" + item.deleteId + "\'><img src=\"icons/delete.svg\" alt=\"remove-btn\"></button>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" onchange='updateName(this)' id='" + item.name + "\' placeholder=\"Name\" class=\'color-side-input " + item.number + "\'>\n" +
                 "            </label>\n" +
@@ -560,8 +571,9 @@ window.onload = function () {
                 "            <p class=\'hex-canvas " + item.id + "\' id=\'" + item.id + "\'>hex</p>\n" +
                 "        </div>")
 
-            $("." + item.id).html(item.hex)
-            $("." + item.id2).css("background-color", item.hex)
+            $("." + item.id).html(item.hexval)
+            $("." + item.id2).css("background-color", item.hexval)
+            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
 }
@@ -607,62 +619,70 @@ function updateName(e) {
 }
 
 function remove(e) {
+
+    let idas = $("#" + e.id).attr('class').split(' ')[1] - 1
     let deletes = Array.from(document.getElementsByClassName(e.id))
     deletes.forEach(i => {
         i.remove();
     });
     if (x === 1) {
-        colorp1.splice(colorp1.indexOf(e.id) - 1, 1)
-        oldInfo1.splice(oldInfo1.indexOf(e.id) - 1, 1)
+        oldInfo1.splice(idas, 1)
         localStorage.setItem("ColorPreset1", JSON.stringify(oldInfo1))
         colorp1N = oldInfo1.length;
         localStorage.setItem("colorp1N", colorp1N)
     }
     if (x === 2) {
-        colorp2.splice(colorp2.indexOf(e.id) - 1, 1)
-        oldInfo2.splice(oldInfo2.indexOf(e.id) - 1, 1)
+        oldInfo2.splice(idas, 1)
         localStorage.setItem("ColorPreset2", JSON.stringify(oldInfo2))
         colorp2N = oldInfo2.length;
         localStorage.setItem("colorp2N", colorp2N)
     }
     if (x === 3) {
-        colorp3.splice(colorp3.indexOf(e.id) - 1, 1)
-        oldInfo3.splice(oldInfo3.indexOf(e.id) - 1, 1)
-        localStorage.setItem("ColorPreset3", JSON.stringify(oldInfo2))
+        oldInfo3.splice(idas, 1)
+        localStorage.setItem("ColorPreset3", JSON.stringify(oldInfo3))
         colorp3N = oldInfo3.length;
         localStorage.setItem("colorp3N", colorp3N)
     }
     if (x === 4) {
-        colorp4.splice(colorp4.indexOf(e.id) - 1, 1)
-        oldInfo4.splice(oldInfo4.indexOf(e.id) - 1, 1)
-        localStorage.setItem("ColorPreset4", JSON.stringify(oldInfo2))
+        oldInfo4.splice(idas, 1)
+        localStorage.setItem("ColorPreset4", JSON.stringify(oldInfo4))
         colorp4N = oldInfo4.length;
         localStorage.setItem("colorp4N", colorp4N)
     }
 }
 
 function removeEdit() {
-    $('#editing-wrapper').fadeOut(300)
+    $('#editing-wrapper').css("opacity", "0")
 }
+$(".presets").click( function () {
+    if (x > 0) {
+        let css = '#edit-btn:hover {filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%)}'
+        let style = document.createElement('style');
+        if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }
+        document.getElementsByTagName('head')[0].appendChild(style);
+    }
+})
 
-$('#editing-wrapper').hide()
+
 
 $("#edit-btn").click(function editingF() {
-    if (x > 0) {
         if (edit === 0) {
             $("#edit-btn").css("filter", "invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%)")
             $(".color-canvas-div").css("cursor", "move")
-            $('#editing-wrapper').fadeIn(300)
+            $('#editing-wrapper').css("opacity", "1")
             edit = 1
         } else {
             if (edit === 1) {
-                $('#editing-wrapper').fadeOut(300)
-                $("#edit-btn").css("filter", "invert(34%) sepia(0%) saturate(240%) hue-rotate(137deg) brightness(90%) contrast(80%)")
+                $('#editing-wrapper').css("opacity", "0")
+                $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
                 $(".color-canvas-div").css("cursor", "pointer")
                 edit = 0
             }
         }
-    }
 })
 
 function resetPreset() {
