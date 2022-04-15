@@ -41,7 +41,6 @@ list.click(function () {
         })
         $(".color-div").css({
             "width": "150px",
-            "border-bottom": "none",
         })
         colormaker.css("display", "none")
         liststatus = 1
@@ -54,7 +53,6 @@ list.click(function () {
         })
         $(".color-div").css({
             "width": "100%",
-            "border-bottom": "thin solid white",
         })
         colormaker.css("display", "none")
         sidemenu.css({
@@ -79,16 +77,20 @@ $("#color-hex-maker").change(function () {
     $("#color-block-maker").val(colorhexmaker.val())
 })
 
-$(".overlay").hide();
-
 $("#reset-btn").click( function () {
     if (x > 0) {
         $('#reset-error').css('display', 'inline')
-        $(".overlay").css('opacity', '0.7');;
+        $(".overlay").css({"display": "inline", "opacity": "0.7"})
     }
-    
 })
 
+$("#settings-button").click( function () {
+    $("#settings").toggle("puff")
+})
+
+$(document).ready(function () {
+        $('#sidebar').toggleClass('active');
+});
 
 homebtn.click(function () {
     colormaker.css("display", "none")
@@ -302,7 +304,6 @@ function doneclick() {
 
             $("." + colorp1[colorp1.length - 1].id2).css("background-color", colorp1[colorp1.length - 1].hexval)
             $("." + colorp1[colorp1.length - 1].id).html(colorp1[colorp1.length - 1].hexval)
-            $("#" + colorp1[colorp1.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp1[colorp1.length - 1].hexval})
 
             localStorage.setItem('ColorPreset1', JSON.stringify(oldInfo1));
 
@@ -349,7 +350,6 @@ function doneclick() {
 
             $("." + colorp2[colorp2.length - 1].id2).css("background-color", colorp2[colorp2.length - 1].hexval)
             $("." + colorp2[colorp2.length - 1].id).html(colorp2[colorp2.length - 1].hexval)
-            $("#" + colorp2[colorp2.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp2[colorp2.length - 1].hexval})
             localStorage.setItem('ColorPreset2', JSON.stringify(oldInfo2));
         }
         if (x === 3) {
@@ -395,7 +395,6 @@ function doneclick() {
 
             $("." + colorp3[colorp3.length - 1].id).html(colorp3[colorp3.length - 1].hexval)
             $("." + colorp3[colorp3.length - 1].id2).css("background-color", colorp3[colorp3.length - 1].hexval)
-            $("#" + colorp3[colorp3.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp3[colorp3.length - 1].hexval})
             localStorage.setItem('ColorPreset3', JSON.stringify(oldInfo3));
 
         }
@@ -442,7 +441,6 @@ function doneclick() {
 
             $("." + colorp4[colorp4.length - 1].id).html(colorp4[colorp4.length - 1].hexval)
             $("." + colorp4[colorp4.length - 1].id2).css("background-color", colorp4[colorp4.length - 1].hexval)
-            $("#" + colorp4[colorp4.length - 1].id3).css({"box-shadow": "inset 0 0 1.5em " + colorp4[colorp4.length - 1].hexval})
             localStorage.setItem('ColorPreset4', JSON.stringify(oldInfo4));
 
         }
@@ -489,7 +487,6 @@ window.onload = function () {
             
             $("." + item.id).html(item.hexval)
             $("." + item.id2).css("background-color", item.hexval)
-            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
     if (localStorage["colorp2N"]) {
@@ -517,7 +514,6 @@ window.onload = function () {
 
             $("." + item.id).html(item.hexval)
             $("." + item.id2).css("background-color", item.hexval)
-            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
     if (localStorage["colorp3N"]) {
@@ -545,7 +541,6 @@ window.onload = function () {
 
             $("." + item.id).html(item.hexval)
             $("." + item.id2).css("background-color", item.hexval)
-            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
     if (localStorage["colorp4N"]) {
@@ -573,7 +568,6 @@ window.onload = function () {
 
             $("." + item.id).html(item.hexval)
             $("." + item.id2).css("background-color", item.hexval)
-            $("#" + item.id3).css({"box-shadow": "inset 0 0 1.5em " + item.hexval})
         }
     }
 }

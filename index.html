@@ -30,11 +30,11 @@
         <button id="done-btn" onclick="doneclick()">Done</button>
     </div>
     <div id="reset-error">
-        <img id="exit-btn-reset" src="icons/x.svg" alt="exit-btn" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css('opacity', '0');">
-        <h2 class="center" style="margin-top: 20%; font-weight: 300">Are you sure you want to reset this preset?</h2>
+        <img id="exit-btn-reset" src="icons/x.svg" alt="exit-btn" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'})">
+        <h2 class="center" style="margin-top: 10%; font-weight: 300">Are you sure you want to reset this preset?</h2>
         <br>
-        <button id="done-btn-reset-no" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css('opacity', '0');">Cancel</button>
-        <button id="done-btn-reset" onclick="resetPreset()">Yes</button>
+        <button id="done-btn-reset-no" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'});">Cancel</button>
+        <button id="done-btn-reset" onclick="resetPreset(); $('.overlay').css({'display': 'none', 'opacity': '0'})">Reset</button>
     </div>
 
     <div id="menu">
@@ -47,7 +47,7 @@
         <label>
             <input class="presetname" placeholder="Text" spellcheck="false" type="text" maxlength="15">
         </label>
-
+        <img id="settings-button" src="icons/settings.svg" alt="settings-btn">
         <img id="list-button" src="icons/list.svg" alt="list-btn">
     </div>
     <div id="sidemenu">
@@ -104,6 +104,28 @@
         </div>
     </div>
     <div id="backgroundHide" class="background">
+    </div>
+
+    <div id="settings">
+        <div id="sidemenu-settings">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3 style="    margin-left: 30px;">Settings</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                        <p class="active">Home</p>
+                    <br>
+                    <p>About</p>
+                    <br>
+                    <p>Pages</p>
+                    <br>
+                    <p>Portfolio</p>
+                    <br>
+                    <p>Contact</p>
+                </ul>
+            </nav>
+        </div>
     </div>
     <script src="JS/Presets.js"></script>
 </body>
