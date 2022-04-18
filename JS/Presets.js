@@ -268,7 +268,7 @@ function doneclick() {
                 id: Date.now(),
                 id2: Date.now() - 3000,
                 id3: Date.now() - 4000,
-                deleteId: Date.now() - 1000,
+                deleteId: Date.now() - 9000,
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
@@ -300,12 +300,15 @@ function doneclick() {
                 "            <br>\n" +
                 "            <div class=\'color-block-canvas " + colorp1[colorp1.length - 1].id2 + "\'></div>\n" +
                 "            <p class=\'hex-canvas " + colorp1[colorp1.length - 1].id + "\' id=\'" + colorp1[colorp1.length - 1].id + "\'>hex</p>\n" +
-                "        </div>")
+                "            <div class=\"shadow-canvas\">\n" +
+                "               <div></div>\n" +
+                "           </div>" +
+                "           </div>" )
 
             $("." + colorp1[colorp1.length - 1].id2).css("background-color", colorp1[colorp1.length - 1].hexval)
             $("." + colorp1[colorp1.length - 1].id).html(colorp1[colorp1.length - 1].hexval)
-
             localStorage.setItem('ColorPreset1', JSON.stringify(oldInfo1));
+            console.log(oldInfo1)
 
         }
         if (x === 2) {
@@ -314,7 +317,7 @@ function doneclick() {
                 id: Date.now(),
                 id2: Date.now() - 3000,
                 id3: Date.now() - 4000,
-                deleteId: Date.now() - 1000,
+                deleteId: Date.now() - 9000,
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
@@ -359,7 +362,7 @@ function doneclick() {
                 id: Date.now(),
                 id2: Date.now() - 3000,
                 id3: Date.now() - 4000,
-                deleteId: Date.now() - 1000,
+                deleteId: Date.now() - 9000,
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
@@ -405,7 +408,7 @@ function doneclick() {
                 id: Date.now(),
                 id2: Date.now() - 3000,
                 id3: Date.now() - 4000,
-                deleteId: Date.now() - 1000,
+                deleteId: Date.now() - 9000,
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
@@ -483,7 +486,7 @@ window.onload = function () {
                 "            <br>\n" +
                 "            <div class=\'color-block-canvas " + item.id2 + "\'></div>\n" +
                 "            <p class=\'hex-canvas " + item.id + "\' id=\'" + item.id + "\'>hex</p>\n" +
-                "        </div>")
+                "           </div>" )
             
             $("." + item.id).html(item.hexval)
             $("." + item.id2).css("background-color", item.hexval)
@@ -510,6 +513,9 @@ window.onload = function () {
                 "            <br>\n" +
                 "            <div class=\'color-block-canvas " + item.id2 + "\'></div>\n" +
                 "            <p class=\'hex-canvas " + item.id + "\' id=\'" + item.id + "\'>hex</p>\n" +
+                "            <div class=\"shadow-canvas\">\n" +
+                "               <div></div>\n" +
+                "           </div>" +
                 "        </div>")
 
             $("." + item.id).html(item.hexval)
@@ -594,56 +600,67 @@ function updateName(e) {
         i.value = $("#" + e.id).val()
     })
     if (x === 1) {
-        oldInfo1[$("#" + e.id).attr('class').split(' ')[1] - 1].nameval =  $("#" + e.id).val()
+        pos = oldInfo1.findIndex(i => i.name == e.id)
+        oldInfo1[pos].nameval = $("#" + e.id).val()
         localStorage.setItem("ColorPreset1", JSON.stringify(oldInfo1))
     }
     if (x === 2) {
-        oldInfo2[$("#" + e.id).attr('class').split(' ')[1] - 1].nameval =  $("#" + e.id).val()
+        pos = oldInfo2.findIndex(i => i.name == e.id)
+        oldInfo2[pos].nameval = $("#" + e.id).val()
         localStorage.setItem("ColorPreset2", JSON.stringify(oldInfo2))
     }
     if (x === 3) {
-        oldInfo3[$("#" + e.id).attr('class').split(' ')[1] - 1].nameval =  $("#" + e.id).val()
+        pos = oldInfo3.findIndex(i => i.name == e.id)
+        oldInfo3[pos].nameval = $("#" + e.id).val()
         localStorage.setItem("ColorPreset3", JSON.stringify(oldInfo3))
     }
     if (x === 4) {
-        oldInfo4[$("#" + e.id).attr('class').split(' ')[1] - 1].nameval =  $("#" + e.id).val()
+        pos = oldInfo4.findIndex(i => i.name == e.id)
+        oldInfo4[pos].nameval = $("#" + e.id).val()
         localStorage.setItem("ColorPreset4", JSON.stringify(oldInfo4))
     }
 
 }
 
-function remove(e) {
 
-    let idas = $("#" + e.id).attr('class').split(' ')[1] - 1
+function remove(e) {
     let deletes = Array.from(document.getElementsByClassName(e.id))
+    idas = $("#" + e.id).attr('class').split(' ')[1]
+    console.log(idas)
     deletes.forEach(i => {
         i.remove();
     });
     if (x === 1) {
-        oldInfo1.splice(idas, 1)
+        pos = oldInfo1.findIndex(i => i.number == idas)
+        oldInfo1.splice(pos, 1)
         localStorage.setItem("ColorPreset1", JSON.stringify(oldInfo1))
         colorp1N = oldInfo1.length;
         localStorage.setItem("colorp1N", colorp1N)
     }
     if (x === 2) {
-        oldInfo2.splice(idas, 1)
+        pos = oldInfo2.findIndex(i => i.number == idas)
+        oldInfo2.splice(pos, 1)
         localStorage.setItem("ColorPreset2", JSON.stringify(oldInfo2))
         colorp2N = oldInfo2.length;
         localStorage.setItem("colorp2N", colorp2N)
     }
     if (x === 3) {
-        oldInfo3.splice(idas, 1)
+        pos = oldInfo3.findIndex(i => i.number == idas)
+        oldInfo3.splice(pos, 1)
         localStorage.setItem("ColorPreset3", JSON.stringify(oldInfo3))
         colorp3N = oldInfo3.length;
         localStorage.setItem("colorp3N", colorp3N)
     }
     if (x === 4) {
-        oldInfo4.splice(idas, 1)
+        pos = oldInfo4.findIndex(i => i.number == idas)
+        oldInfo4.splice(pos, 1)
         localStorage.setItem("ColorPreset4", JSON.stringify(oldInfo4))
         colorp4N = oldInfo4.length;
         localStorage.setItem("colorp4N", colorp4N)
     }
 }
+
+
 
 function removeEdit() {
     $('#editing-wrapper').css("opacity", "0")

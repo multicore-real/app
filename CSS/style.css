@@ -505,12 +505,10 @@ button:hover {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
-    z-index: 3;
+    z-index: 3 !important;
     cursor: pointer;
     display: inline-block;
-    position: relative;
     padding: 0;
-    height: 135px;
     background-color: var(--black);
     width: 150px;
     border-radius: 10px;
@@ -529,7 +527,6 @@ button:hover {
     border-radius: 10px;
     width: 65px;
     height: 65px;
-    z-index: 3;
     display: inline-block;
     border: none;
 }
@@ -767,6 +764,8 @@ button:hover {
 
 /* --SETTINGS END-- */
 
+/* --MEDIA-- */
+
 @media only screen and (max-width: 1150px) {
     .presetname {
         margin-top: -10px;
@@ -814,9 +813,3 @@ button:hover {
     opacity:0;
     z-index:4;
 }
-
-
-
-
-
-
