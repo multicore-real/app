@@ -846,20 +846,24 @@ function findID(e) {
         if (x === 4) {
             element.drag = new DragElement(element, "background4")
         }
+    } else {
+        let new_element = element.cloneNode(true);
+        element.parentNode.replaceChild(new_element, element)
     }
 }
+
 
 /*
     DragElement by Jim Andrews, 2/18/2021
 
     You are free to use this code as you please. However, if you find
     any bugs in it, please fix them, let me know, and make the fix
-    available. 
+    available.
 */
 function DragElement(aElement, aCage) {
-    /*  * Constructs an object that makes aElement draggable (mouse or touch). 
-        * aElement is the element (or its id) that becomes draggable. 
-        * aCage is is an optional element (or its id) that aElement stays within. 
+    /*  * Co
+        * aEnstructs an object that makes aElement draggable (mouse or touch). lement is the element (or its id) that becomes draggable.
+        * aCage is is an optional element (or its id) that aElement stays within.
         * aCage does not have to be the parent of aElement.
         * The CSS position property of aElement cannot be static (the default value).
     */
@@ -876,18 +880,18 @@ function DragElement(aElement, aCage) {
     // METHODS
     //********************************************************************
 
-    this.setCage = function(cage) {
+    this.setCage = function (cage) {
         // cage can be an element or its id. It is the (optional)
         // element that pElement stays within when pElement is dragged.
         if (typeof cage == 'string') {
             pConstraint = document.getElementById(cage);
-        }
-        else {
+        } else {
             pConstraint = cage;
         }
     }
 
-    this.deactivate = function() {
+
+    this.deactivate = function () {
         // Deactivates the ability of pElement to be dragged.
         pPointerDown = false;
         window.removeEventListener('mousedown', mDown, false);
@@ -898,11 +902,12 @@ function DragElement(aElement, aCage) {
         window.removeEventListener('touchend', tEnd, false);
     }
 
-    this.reactivate = function() {
+    this.reactivate = function () {
         // Reactivates ability to drag pElement.
         this.deactivate();
         pElement.addEventListener('mousedown', mDown, false);
         pElement.addEventListener('touchstart', tStart, false);
+
     }
 
     //********************************************************************
@@ -910,7 +915,7 @@ function DragElement(aElement, aCage) {
     //********************************************************************
 
     function mDown(e) {
-        // Runs on mousedown. 
+        // Runs on mousedown.
         pPointerDown = true;
         var e = e || window.event;
         if (pElement.tagName == "IMG") e.preventDefault();
@@ -987,22 +992,19 @@ function DragElement(aElement, aCage) {
             //---------------------
             if (pConstraint) {
                 var constraintClientRect = pConstraint.getBoundingClientRect();
-                if (clientX - pOffsetX  < constraintClientRect.left) {
-                    // If we're about to cross the left border, position 
+                if (clientX - pOffsetX < constraintClientRect.left) {
+                    // If we're about to cross the left border, position
                     // pElement on left edge of constraining rect.
                     pElement.style.left = constraintClientRect.left + tX + 'px';
-                }
-                else {
+                } else {
                     if (clientX + elementClientRect.width - pOffsetX > constraintClientRect.right) {
                         // If we're about to cross the right border, position on right edge of constraining rect.
                         pElement.style.left = constraintClientRect.right - elementClientRect.width + tX + 'px';
-                    }
-                    else {
+                    } else {
                         if (clientX >= constraintClientRect.left + pOffsetX && clientX <= constraintClientRect.right - (elementClientRect.width - pOffsetX)) {
                             // If we're not crossing either of the two horizontal borders, proceed normally.
                             pElement.style.left = clientX - pOffsetX + tX + 'px';
-                        }
-                        else {
+                        } else {
                             // do nothing
                         }
                     }
@@ -1010,16 +1012,13 @@ function DragElement(aElement, aCage) {
                 //---------------------
                 if (clientY - pOffsetY < constraintClientRect.top) {
                     pElement.style.top = constraintClientRect.top + tY + 'px';
-                }
-                else {
+                } else {
                     if (clientY + elementClientRect.height - pOffsetY > constraintClientRect.bottom) {
                         pElement.style.top = constraintClientRect.bottom + tY - elementClientRect.height + 'px';
-                    }
-                    else {
-                        if (clientY >= constraintClientRect.top + pOffsetY && clientY <= constraintClientRect.bottom  - (elementClientRect.height - pOffsetY)) {
+                    } else {
+                        if (clientY >= constraintClientRect.top + pOffsetY && clientY <= constraintClientRect.bottom - (elementClientRect.height - pOffsetY)) {
                             pElement.style.top = clientY - pOffsetY + tY + 'px';
-                        }
-                        else {
+                        } else {
                             // do nothing
                         }
                     }
@@ -1043,16 +1042,14 @@ function DragElement(aElement, aCage) {
     pConstraint = null;
     if (typeof aElement == "string") {
         pElement = document.getElementById(aElement);
-    }
-    else {
+    } else {
         pElement = aElement;
     }
     pElement.addEventListener('mousedown', mDown, false);
     pElement.addEventListener('touchstart', tStart, false);
     if (aCage) {
         this.setCage(aCage);
-    }
-    else {
+    } else {
         pConstraint = null;
     }
 }   // end of DragElement
