@@ -17,116 +17,119 @@
 </head>
 <body>
 <div class="overlay"></div>
-    <div id="color-maker">
-        <img id="exit-btn-maker" src="icons/x.svg" alt="exit-btn" onclick="$('#color-maker').css('display', 'none')">
-        <label for="color-block-maker">
-            <input id="color-block-maker" value="#585757" type="color">
-        </label>
-        <br>
-        <label for="color-hex-maker">
-            <input placeholder="#ffffffff" spellcheck="false" value="#" maxlength="7" id="color-hex-maker">
-        </label>
-        <br>
-        <button id="done-btn" onclick="doneclick()">Done</button>
-    </div>
-    <div id="reset-error">
-        <img id="exit-btn-reset" src="icons/x.svg" alt="exit-btn" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'})">
-        <h2 class="center" style="margin-top: 10%; font-weight: 300">Are you sure you want to reset this preset?</h2>
-        <br>
-        <button id="done-btn-reset-no" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'});">Cancel</button>
-        <button id="done-btn-reset" onclick="resetPreset(); $('.overlay').css({'display': 'none', 'opacity': '0'})">Reset</button>
-    </div>
+    <div id="content">
+        <div id="color-maker">
+            <img id="exit-btn-maker" src="icons/x.svg" alt="exit-btn" onclick="$('#color-maker').css('display', 'none')">
+            <label for="color-block-maker">
+                <input id="color-block-maker" value="#585757" type="color">
+            </label>
+            <br>
+            <label for="color-hex-maker">
+                <input placeholder="#ffffffff" spellcheck="false" value="#" maxlength="7" id="color-hex-maker">
+            </label>
+            <br>
+            <button id="done-btn" onclick="doneclick()">Done</button>
+        </div>
+        <div id="reset-error">
+            <img id="exit-btn-reset" src="icons/x.svg" alt="exit-btn" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'})">
+            <h2 class="center" style="margin-top: 10%; font-weight: 300">Are you sure you want to reset this preset?</h2>
+            <br>
+            <button id="done-btn-reset-no" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'});">Cancel</button>
+            <button id="done-btn-reset" onclick="resetPreset(); $('.overlay').css({'display': 'none', 'opacity': '0'})">Reset</button>
+        </div>
 
-    <div id="menu">
-        <img id="home-btn" src="icons/home.png" alt="home-btn">
-        <button class="presets" id="preset1">preset 1</button>
-        <button class="presets" id="preset2">preset 2</button>
-        <button class="presets" id="preset3">preset 3</button>
-        <button class="presets" id="preset4">preset 4</button>
-        <img id="reset-btn" src="icons/reset.svg" alt="reset-btn">
-        <label>
-            <input class="presetname" placeholder="Text" spellcheck="false" type="text" maxlength="15">
-        </label>
-        <img id="settings-button" src="icons/settings.svg" alt="settings-btn">
-        <img id="list-button" src="icons/list.svg" alt="list-btn">
-    </div>
-    <div id="sidemenu">
-        <div class="center">
-            <div id="preset1-color-div" class="center presets-color-div">
-                <div id="color-wrap1">
-                </div>
+        <div id="menu">
+            <div id="presets-wrap">
+            <img id="home-btn" src="icons/home.png" alt="home-btn">
+            <button class="presets" id="preset1">preset 1</button>
+            <button class="presets" id="preset2">preset 2</button>
+            <button class="presets" id="preset3">preset 3</button>
+            <button class="presets" id="preset4">preset 4</button>
+            <img id="reset-btn" src="icons/reset.svg" alt="reset-btn">
             </div>
-            <div id="preset2-color-div" class="center presets-color-div">
-                <div id="color-wrap2">
+
+            <label>
+                <input class="presetname" placeholder="Text" spellcheck="false" type="text" maxlength="15">
+            </label>
+            <img id="settings-button" src="icons/settings.svg" alt="settings-btn">
+            <img id="list-button" src="icons/list.svg" alt="list-btn">
+        </div>
+        <div id="sidemenu">
+            <div class="center">
+                <div id="preset1-color-div" class="center presets-color-div">
+                    <div id="color-wrap1">
+                    </div>
                 </div>
-            </div>
-            <div id="preset3-color-div" class="center presets-color-div">
-                <div id="color-wrap3">
+                <div id="preset2-color-div" class="center presets-color-div">
+                    <div id="color-wrap2">
+                    </div>
                 </div>
-            </div>
-            <div id="preset4-color-div" class="center presets-color-div">
-                <div id="color-wrap4">
+                <div id="preset3-color-div" class="center presets-color-div">
+                    <div id="color-wrap3">
+                    </div>
                 </div>
+                <div id="preset4-color-div" class="center presets-color-div">
+                    <div id="color-wrap4">
+                    </div>
+                </div>
+                <button id="add-btn"><img src="icons/pluss.svg" alt="add-btn"></button>
+                <p id="chosep">chose preset</p>
             </div>
-            <button id="add-btn"><img src="icons/pluss.svg" alt="add-btn"></button>
-            <p id="chosep">chose preset</p>
         </div>
-    </div>
-    <img id="edit-btn" src="icons/edit.svg" alt="edit-btn">
+        <img id="edit-btn" src="icons/edit.svg" alt="edit-btn">
 
-    <div id="editing-wrapper">
-        <div id="editing-div">
-            <p id="editing-text">You can now edit and drag colors</p>
-            <img id="exit-btn" src="icons/x.svg" alt="exit-btn" onclick="removeEdit()">
+        <div id="editing-wrapper">
+            <div id="editing-div">
+                <p id="editing-text">You can now edit and drag colors</p>
+                <img id="exit-btn" src="icons/x.svg" alt="exit-btn" onclick="removeEdit()">
+            </div>
         </div>
-    </div>
 
-    <div id="copied-wrapper">
-        <div id="copied-div" role="alert">
-            <p id="copied-text">Successfully copied</p>
+        <div id="copied-wrapper">
+            <div id="copied-div" role="alert">
+                <p id="copied-text">Successfully copied</p>
+            </div>
         </div>
-    </div>
 
-    <div id="background-div1" class="background-div presets-color-div">
-        <div id="background1" class="background">
+        <div id="background-div1" class="background-div presets-color-div">
+            <div id="background1" class="background">
+            </div>
+        </div>
+        <div id="background-div2" class="background-div presets-color-div">
+            <div id="background2" class="background">
+            </div>
+        </div>
+        <div id="background-div3" class="background-div presets-color-div">
+            <div id="background3" class="background">
+            </div>
+        </div>
+        <div id="background-div4" class="background-div presets-color-div">
+            <div id="background4" class="background">
+            </div>
+        </div>
+        <div id="backgroundHide" class="background">
         </div>
     </div>
-    <div id="background-div2" class="background-div presets-color-div">
-        <div id="background2" class="background">
-        </div>
-    </div>
-    <div id="background-div3" class="background-div presets-color-div">
-        <div id="background3" class="background">
-        </div>
-    </div>
-    <div id="background-div4" class="background-div presets-color-div">
-        <div id="background4" class="background">
-        </div>
-    </div>
-    <div id="backgroundHide" class="background">
-    </div>
-
     <div id="settings">
-        <img id="settings-exit-btn" src="icons/x.svg" alt="exit-btn" onclick="removeEdit()">
-        <div id="sidemenu-settings">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3 style="    margin-left: 30px;">Settings</h3>
-                </div>
+        <img id="settings-exit-btn" src="icons/x.svg" alt="exit-btn" onclick="closeSettings()">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="    margin-left: 30px;">Settings</h3>
+            </div>
 
-                <ul class="list-unstyled components">
-                        <p class="active">Home</p>
-                    <br>
-                    <p>About</p>
-                    <br>
-                    <p>Pages</p>
-                    <br>
-                    <p>Portfolio</p>
-                    <br>
-                    <p>Contact</p>
-                </ul>
-            </nav>
-        </div>
+            <ul class="list-unstyled components">
+                <p id="list-item1" class="settings-menu-item">Appearance</p>
+                <br>
+                <p id="list-item2" class="settings-menu-item">About</p>
+                <br>
+                <p id="list-item3" class="settings-menu-item">Pages</p>
+                <br>
+                <p id="list-item4" class="settings-menu-item">Portfolio</p>
+                <br>
+                <p id="list-item5" class="settings-menu-item">Contact</p>
+            </ul>
+        </nav>
+        <div id="settings-content"></div>
     </div>
     <script src="JS/Presets.js"></script>
 </body>

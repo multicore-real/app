@@ -13,8 +13,13 @@ body {
     margin: 0;
     left: 0;
     top: 0;
-    background-color: var(--black);
+    background-color: var(--thinblack);
     overflow: hidden;
+}
+
+#content {
+    display: block;
+    transition: 70ms;
 }
 
 ::placeholder {
@@ -85,6 +90,20 @@ button:hover {
 
 /* --MENU TOP-- */
 
+
+#settings-exit-btn {
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
+    float: right;
+    position: relative;
+    top: 7px;
+    bottom: 0;
+    margin: auto 15px auto 10px;
+    height: 33px;
+    cursor: pointer;
+}
+
+
+
 #menu {
     background-color: #3a3a3a;
     z-index: 2;
@@ -96,9 +115,13 @@ button:hover {
     top: 0;
 }
 
+
+
 #home-btn:hover {
     filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
 }
+
+
 
 #list-button {
     filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
@@ -115,28 +138,80 @@ button:hover {
     filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
 }
 
-.presets {
-    outline: none;
-    background: none;
-    border: none;
-    font-size: 17px;
+#presets-wrap button,
+#presets-wrap button:hover,
+#presets-wrap button:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#presets-wrap {
+    vertical-align: middle;
+    height: 50px;
+    padding: 0 15px 0 15px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
     color: var(--grey);
-    display: inline-block;
-    padding: 15px 15px;
     margin: 0;
+    transition: all 0.3s;
+}
+
+
+.presets{
+    font-size: 17px;
+    color: var(--grey);
+    font-family: Helvetica, sans-serif;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(
+            to right,
+            var(--border),
+            var(--border) 50%,
+            var(--grey) 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 0 15px 3px 15px;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.presets::before {
+    content: '';
+    background: var(--border);
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
 }
 
 .presets:hover {
-    color: var(--almostwhite);
+    background-position: 0;
+}
+
+.presets:hover::before {
+    width: 100%;
 }
 
 #focused {
     color: var(--border);
     border-bottom: 3px solid var(--border);
-    padding-bottom: 3px;
+    background-position: 0;
 }
+
+#focused::before {
+    width: 100%;
+}
+
+
 
 .presetname {
     padding: 0;
@@ -154,6 +229,8 @@ button:hover {
 .presetname:focus-visible {
     outline: none;
 }
+
+
 
 .presets-color-div {
     display: none;
@@ -665,16 +742,18 @@ button:hover {
 }
 
 
-#settings p,
-#settings p:hover,
-#settings p:focus {
+
+#sidebar p,
+#sidebar p:hover,
+#sidebar p:focus {
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
 }
 
 #sidebar {
-    width: 25vw;
+    min-width: 300px;
+    width: 30vw;
     height: 100vh;
     background: var(--thinblack);
     color: var(--almostwhite);
@@ -687,11 +766,11 @@ button:hover {
     background: #333232;
 }
 
-.components p {
+.settings-menu-item {
     background-image: linear-gradient(
             to right,
-            var(--purple),
-            var(--purple) 50%,
+            var(--border),
+            var(--border) 50%,
             var(--grey) 50%
     );
     cursor: pointer;
@@ -709,9 +788,9 @@ button:hover {
     transition: all 0.3s ease-in-out;
 }
 
-.components p:before {
+.settings-menu-item:before {
     content: '';
-    background: var(--purple);
+    background: var(--border);
     display: block;
     position: absolute;
     bottom: -3px;
@@ -721,27 +800,39 @@ button:hover {
     transition: all 0.3s ease-in-out;
 }
 
-.components p:hover {
+.settings-menu-item:hover {
     background-position: 0;
 }
 
-.components p:hover::before {
+.settings-menu-item:hover::before {
     width: 100%;
 }
 
 
 
-#sidemenu-settings {
-    width: 25vw;
-    height: 100vh;
-    top: 0;
-    position: absolute;
-    background-color: var(--grey);
-    z-index: 11;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+.active::before {
+    width: 100%;
+}
+
+.active {
+    background-position: 0;
+}
+
+
+
+#settings-exit-btn {
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
+    float: right;
+    position: relative;
+    top: 7px;
+    bottom: 0;
+    margin: auto 15px auto 10px;
+    height: 33px;
+    cursor: pointer;
+}
+
+#settings-exit-btn:hover {
+    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
 }
 
 

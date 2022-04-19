@@ -84,10 +84,6 @@ $("#reset-btn").click( function () {
     }
 })
 
-$("#settings-button").click( function () {
-    $("#settings").toggle("puff")
-})
-
 $(document).ready(function () {
         $('#sidebar').toggleClass('active');
 });
@@ -227,6 +223,61 @@ preset4.click(function () {
 });
 
 
+
+$("#list-item1").click(function () {
+    if ($("#list-item1").hasClass("active")) {
+        $('.settings-menu-item').removeClass('active')
+    } else {
+        $('.settings-menu-item').removeClass('active')
+        $('#list-item1').toggleClass("active")
+    }
+})
+$("#list-item2").click(function () {
+    if ($("#list-item2").hasClass("active")) {
+        $('.settings-menu-item').removeClass('active')
+    } else {
+        $('.settings-menu-item').removeClass('active')
+        $('#list-item2').toggleClass("active")
+    }
+})
+$("#list-item3").click(function () {
+    if ($("#list-item3").hasClass("active")) {
+        $('.settings-menu-item').removeClass('active')
+    } else {
+        $('.settings-menu-item').removeClass('active')
+        $('#list-item3').toggleClass("active")
+    }
+})
+$("#list-item4").click(function () {
+    if ($("#list-item4").hasClass("active")) {
+        $('.settings-menu-item').removeClass('active')
+    } else {
+        $('.settings-menu-item').removeClass('active')
+        $('#list-item4').toggleClass("active")
+    }
+})
+$("#list-item5").click(function () {
+    if ($("#list-item5").hasClass("active")) {
+        $('.settings-menu-item').removeClass('active')
+    } else {
+        $('.settings-menu-item').removeClass('active')
+        $('#list-item5').toggleClass("active")
+    }
+})
+
+function closeSettings() {
+    $("#content").css("transform", "scale(1)")
+    $("#settings").toggle("puff", 70)
+}
+
+$("#settings-button").click( function () {
+    $("#settings").toggle("puff", 70)
+    $("#content").css("transform", "scale(0.97)")
+})
+
+
+
+
 addbtn.click(function () {
 
     if (x === 0) {
@@ -300,9 +351,6 @@ function doneclick() {
                 "            <br>\n" +
                 "            <div class=\'color-block-canvas " + colorp1[colorp1.length - 1].id2 + "\'></div>\n" +
                 "            <p class=\'hex-canvas " + colorp1[colorp1.length - 1].id + "\' id=\'" + colorp1[colorp1.length - 1].id + "\'>hex</p>\n" +
-                "            <div class=\"shadow-canvas\">\n" +
-                "               <div></div>\n" +
-                "           </div>" +
                 "           </div>" )
 
             $("." + colorp1[colorp1.length - 1].id2).css("background-color", colorp1[colorp1.length - 1].hexval)
@@ -665,18 +713,6 @@ function remove(e) {
 function removeEdit() {
     $('#editing-wrapper').css("opacity", "0")
 }
-$(".presets").click( function () {
-    if (x > 0) {
-        let css = '#edit-btn:hover {filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%)}'
-        let style = document.createElement('style');
-        if (style.styleSheet) {
-            style.styleSheet.cssText = css;
-        } else {
-            style.appendChild(document.createTextNode(css));
-        }
-        document.getElementsByTagName('head')[0].appendChild(style);
-    }
-})
 
 
 
@@ -800,7 +836,8 @@ function findID(e) {
     let element = document.getElementById(IdOfElement)
     if (edit === 1) {
         if (x === 1) {
-            element.drag = new DragElement(element, "background1")
+            element.drag = new DragElement(element)
+            console.log(element)
         }
         if (x === 2) {
             element.drag = new DragElement(element, "background2")
