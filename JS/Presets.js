@@ -31,7 +31,7 @@ let oldInfo4 = JSON.parse(localStorage.getItem('ColorPreset4') || '[]');
 list.click(function () {
     if (liststatus === 0) {
         sidemenu.css({
-            "width": "calc(100vw - 1px)",
+            "width": "100vw",
         })
         addbtn.css({
             "position": "absolute",
@@ -62,6 +62,28 @@ list.click(function () {
     }
 });
 
+$("body").keyup(function (event) {
+    if (sidemenu.width === $("window").width) {
+        if (event.key === "Escape") {
+            liststatus = 0
+            addbtn.css({
+                "position": "initial",
+                "left": "0",
+                "transform": "translate(0)",
+            })
+            $(".color-div").css({
+                "width": "100%",
+            })
+            colormaker.css("display", "none")
+            sidemenu.css({
+                "width": "200px",
+                "transform": "translate(0)",
+            })
+        }
+    }
+})
+
+
 $("#done-btn").click(function () {
     if (liststatus === 1) {
         $(".color-div").css({
@@ -78,8 +100,9 @@ $("#color-hex-maker").change(function () {
 })
 
 $("#reset-btn").click( function () {
+    console.log(x)
     if (x > 0) {
-        $('#reset-error').css('display', 'inline')
+        $('#reset-error').css('display', 'block')
         $(".overlay").css({"display": "inline", "opacity": "0.7"})
     }
 })
@@ -130,8 +153,7 @@ $(".presets").click(function () {
 })
 
 preset1.click(function () {
-    $('#editing-wrapper').css("opacity", "0")
-    $("#edit-btn").css({"cursor": "pointer"})
+    removeEdit()
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -153,8 +175,7 @@ preset1.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset2.click(function () {
-    $('#editing-wrapper').css("opacity", "0")
-    $("#edit-btn").css({"cursor": "pointer"})
+    removeEdit()
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -176,8 +197,7 @@ preset2.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset3.click(function () {
-    $('#editing-wrapper').css("opacity", "0")
-    $("#edit-btn").css({"cursor": "pointer"})
+    removeEdit()
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -199,8 +219,7 @@ preset3.click(function () {
     $("#backgroundHide").css("display", "none")
 });
 preset4.click(function () {
-    $('#editing-wrapper').css("opacity", "0")
-    $("#edit-btn").css({"cursor": "pointer"})
+    removeEdit()
     $(".color-canvas-div").css("cursor", "pointer")
     edit = 0
     $("#chosep").css("display", "none")
@@ -221,7 +240,6 @@ preset4.click(function () {
     $("#background-div4").css("display", "initial")
     $("#backgroundHide").css("display", "none")
 });
-
 
 
 $("#list-item1").click(function () {
@@ -266,7 +284,7 @@ $("#list-item5").click(function () {
 })
 
 function closeSettings() {
-    $("#content").css("transform", "scale(1)")
+    $("#content").css("transform", "")
     $("#settings").toggle("puff", 70)
 }
 
@@ -275,17 +293,23 @@ $("#settings-button").click( function () {
     $("#content").css("transform", "scale(0.97)")
 })
 
-
+$("body").keyup(function (event) {
+    if ($('#settings').css('display') === 'block') {
+        if (event.key === "Escape") {
+            $("#content").css("transform", "")
+            $("#settings").toggle("puff", 70)
+        }
+    }
+})
 
 
 addbtn.click(function () {
-
-    if (x === 0) {
-    } else {
-        y = 1
-        colormaker.css("display", "initial")
+    if (edit === 0) {
+        if (x > 0) {
+            y = 1
+            colormaker.css("display", "initial")
+        }
     }
-
 });
 
 colorhexmaker.change(function () {
@@ -302,7 +326,6 @@ $("body").keyup(function (event) {
             colormaker.css("display", "none")
         }
     }
-
 });
 
 function doneclick() {
@@ -710,33 +733,61 @@ function remove(e) {
 
 
 
+$("body").keyup(function (event) {
+    if (edit === 1) {
+        if (event.key === "Escape") {
+            removeEdit()
+        }
+    }
+});
+
+
 function removeEdit() {
     $('#editing-wrapper').css("opacity", "0")
+    $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
+    $(".color-canvas-div").css("cursor", "pointer")
+    edit = 0
 }
 
 
 
 $("#edit-btn").click(function editingF() {
-        if (edit === 0) {
-            $("#edit-btn").css("filter", "invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%)")
-            $(".color-canvas-div").css("cursor", "move")
-            $('#editing-wrapper').css("opacity", "1")
-            edit = 1
-        } else {
-            if (edit === 1) {
-                $('#editing-wrapper').css("opacity", "0")
-                $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
-                $(".color-canvas-div").css("cursor", "pointer")
-                edit = 0
-            }
+    if (edit === 0) {
+        $("#edit-btn").css("filter", "invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%)")
+        $(".color-canvas-div").css("cursor", "move")
+        $('#editing-wrapper').css("opacity", "1")
+        edit = 1
+    } else {
+        if (edit === 1) {
+            $('#editing-wrapper').css("opacity", "0")
+            $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
+            $(".color-canvas-div").css("cursor", "pointer")
+            edit = 0
         }
+    }
 })
+
+
+$("body").keyup(function (event) {
+    if ($('#reset-error').css('display') === 'block') {
+        if (event.key === "Enter") {
+            resetPreset()
+        }
+        if (event.key === "Escape") {
+            $('#reset-error').css("display", "none")
+            $('.overlay').css({'display': 'none', 'opacity': '0'})
+        }
+    }
+});
 
 function resetPreset() {
     $('#reset-error').css('display', 'none')
+    $('.overlay').css({'display': 'none', 'opacity': '0'})
+    presetname.val(null)
     if (x === 1) {
-        preset1.html("preset1")
+        preset1.html("preset 1")
         colorp1 = []
+        oldInfo1 = []
         localStorage.removeItem("colorp1N")
         localStorage.removeItem("preset1")
         localStorage.removeItem("ColorPreset1")
@@ -754,8 +805,9 @@ function resetPreset() {
         }
     }
     if (x === 2) {
-        preset2.html("preset2")
+        preset2.html("preset 2")
         colorp2 = []
+        oldInfo2 = []
         localStorage.removeItem("colorp2N")
         localStorage.removeItem("preset2")
         localStorage.removeItem("ColorPreset2")
@@ -773,8 +825,9 @@ function resetPreset() {
         }
     }
     if (x === 3) {
-        preset3.html("preset3")
+        preset3.html("preset 3")
         colorp3 = []
+        oldInfo3 = []
         localStorage.removeItem("colorp3N")
         localStorage.removeItem("preset3")
         localStorage.removeItem("ColorPreset3")
@@ -792,8 +845,9 @@ function resetPreset() {
         }
     }
     if (x === 4) {
-        preset4.html("preset4")
+        preset4.html("preset 4")
         colorp4 = []
+        oldInfo4 = []
         localStorage.removeItem("colorp4N")
         localStorage.removeItem("preset4")
         localStorage.removeItem("ColorPreset4")
