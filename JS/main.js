@@ -4,8 +4,8 @@ const createWindow = () => {
         width: 1920,
         height: 1080,
         center: true,
-        minHeight: 500,
-        minWidth: 500,
+        minHeight: 700,
+        minWidth: 1000,
         webPreferences: {
             nodeIntegration: true
         }

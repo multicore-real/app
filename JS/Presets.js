@@ -100,7 +100,6 @@ $("#color-hex-maker").change(function () {
 })
 
 $("#reset-btn").click( function () {
-    console.log(x)
     if (x > 0) {
         $('#reset-error').css('display', 'block')
         $(".overlay").css({"display": "inline", "opacity": "0.7"})
@@ -141,7 +140,8 @@ presetname.change(function () {
 
 
 $(".presets").click(function () {
-    let css = '#reset-btn:hover {transform: rotate(180deg); filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%)}'
+    editBtnP()
+    let css = '#reset-btn:hover {transform: rotate(180deg); filter: invert(42%) sepia(59%) saturate(935%) hue-rotate(216deg) brightness(97%) contrast(84%)'
     let style = document.createElement('style');
     $("#reset-btn").css({"cursor": "pointer"})
     if (style.styleSheet) {
@@ -303,6 +303,7 @@ $("body").keyup(function (event) {
 })
 
 
+
 addbtn.click(function () {
     if (edit === 0) {
         if (x > 0) {
@@ -346,6 +347,8 @@ function doneclick() {
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
+                left: "",
+                top: "",
             }
             colorp1.push(color)
             oldInfo1.push(color);
@@ -379,7 +382,6 @@ function doneclick() {
             $("." + colorp1[colorp1.length - 1].id2).css("background-color", colorp1[colorp1.length - 1].hexval)
             $("." + colorp1[colorp1.length - 1].id).html(colorp1[colorp1.length - 1].hexval)
             localStorage.setItem('ColorPreset1', JSON.stringify(oldInfo1));
-            console.log(oldInfo1)
 
         }
         if (x === 2) {
@@ -392,6 +394,8 @@ function doneclick() {
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
+                left: "",
+                top: "",
             }
             colorp2.push(color)
             oldInfo2.push(color);
@@ -437,6 +441,8 @@ function doneclick() {
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
+                left: "",
+                top: "",
             }
             colorp3.push(color)
             oldInfo3.push(color);
@@ -483,6 +489,8 @@ function doneclick() {
                 hexval: colorhexmaker.val(),
                 name: Date.now() - 5000,
                 nameval: "",
+                left: "",
+                top: "",
             }
             colorp4.push(color)
             oldInfo4.push(color);
@@ -560,6 +568,7 @@ window.onload = function () {
                 "           </div>" )
             
             $("." + item.id).html(item.hexval)
+            $("#" + item.id3).css({"left": item.left, "top": item.top})
             $("." + item.id2).css("background-color", item.hexval)
         }
     }
@@ -590,6 +599,7 @@ window.onload = function () {
                 "        </div>")
 
             $("." + item.id).html(item.hexval)
+            $("#" + item.id3).css({"left": item.left, "top": item.top})
             $("." + item.id2).css("background-color", item.hexval)
         }
     }
@@ -617,6 +627,7 @@ window.onload = function () {
                 "        </div>")
 
             $("." + item.id).html(item.hexval)
+            $("#" + item.id3).css({"left": item.left, "top": item.top})
             $("." + item.id2).css("background-color", item.hexval)
         }
     }
@@ -644,6 +655,7 @@ window.onload = function () {
                 "        </div>")
 
             $("." + item.id).html(item.hexval)
+            $("#" + item.id3).css({"left": item.left, "top": item.top})
             $("." + item.id2).css("background-color", item.hexval)
         }
     }
@@ -697,7 +709,6 @@ function updateName(e) {
 function remove(e) {
     let deletes = Array.from(document.getElementsByClassName(e.id))
     idas = $("#" + e.id).attr('class').split(' ')[1]
-    console.log(idas)
     deletes.forEach(i => {
         i.remove();
     });
@@ -751,21 +762,51 @@ function removeEdit() {
 
 
 
+
+
 $("#edit-btn").click(function editingF() {
-    if (edit === 0) {
-        $("#edit-btn").css("filter", "invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%)")
-        $(".color-canvas-div").css("cursor", "move")
-        $('#editing-wrapper').css("opacity", "1")
-        edit = 1
-    } else {
-        if (edit === 1) {
-            $('#editing-wrapper').css("opacity", "0")
-            $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
-            $(".color-canvas-div").css("cursor", "pointer")
-            edit = 0
+    if (x > 0) {
+        if (edit === 0) {
+            editBtnG()
+            $("#edit-btn").css("filter", "invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%)")
+            $(".color-canvas-div").css("cursor", "move")
+            $('#editing-wrapper').css("opacity", "1")
+            edit = 1
+        } else {
+            if (edit === 1) {
+                editBtnP()
+                $('#editing-wrapper').css("opacity", "0")
+                $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
+                $(".color-canvas-div").css("cursor", "pointer")
+                edit = 0
+            }
         }
     }
 })
+
+function editBtnP() {
+    let css = '#edit-btn:hover {filter: invert(42%) sepia(59%) saturate(935%) hue-rotate(216deg) brightness(97%) contrast(84%) !important'
+    let style = document.createElement('style');
+    $("#edit-btn").css({"cursor": "pointer"})
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
+
+function editBtnG() {
+    let css = '#edit-btn:hover {filter: invert(54%) sepia(38%) saturate(612%) hue-rotate(96deg) brightness(103%) contrast(91%) !important'
+    let style = document.createElement('style');
+    $("#edit-btn").css({"cursor": "pointer"})
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
 
 
 $("body").keyup(function (event) {
@@ -906,7 +947,6 @@ function findID(e) {
     }
 }
 
-
 /*
     DragElement by Jim Andrews, 2/18/2021
 
@@ -1031,6 +1071,7 @@ function DragElement(aElement, aCage) {
     //********************************************************************
 
     function moveElement(clientX, clientY) {
+
         // Called when the mouse is dragging pElement.
         if (pPointerDown) {
             var elementClientRect = pElement.getBoundingClientRect();
@@ -1085,6 +1126,30 @@ function DragElement(aElement, aCage) {
                 pElement.style.top = clientY + tY - pOffsetY + 'px';
             }
 
+        }
+        if (x === 1) {
+            pos = oldInfo1.findIndex(i => i.id3 == pElement.id)
+            oldInfo1[pos].left = $("#"+pElement.id).css("left")
+            oldInfo1[pos].top = $("#"+pElement.id).css("top")
+            localStorage.setItem("ColorPreset1", JSON.stringify(oldInfo1))
+        }
+        if (x === 2) {
+            pos = oldInfo2.findIndex(i => i.id3 == pElement.id)
+            oldInfo2[pos].left = $("#"+pElement.id).css("left")
+            oldInfo2[pos].top = $("#"+pElement.id).css("top")
+            localStorage.setItem("ColorPreset2", JSON.stringify(oldInfo2))
+        }
+        if (x === 3) {
+            pos = oldInfo3.findIndex(i => i.id3 == pElement.id)
+            oldInfo3[pos].left = $("#"+pElement.id).css("left")
+            oldInfo3[pos].top = $("#"+pElement.id).css("top")
+            localStorage.setItem("ColorPreset3", JSON.stringify(oldInfo3))
+        }
+        if (x === 4) {
+            pos = oldInfo4.findIndex(i => i.id3 == pElement.id)
+            oldInfo4[pos].left = $("#"+pElement.id).css("left")
+            oldInfo4[pos].top = $("#"+pElement.id).css("top")
+            localStorage.setItem("ColorPreset4", JSON.stringify(oldInfo4))
         }
     }
 

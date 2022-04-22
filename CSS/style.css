@@ -1,12 +1,15 @@
 :root {
+    color-scheme: dark light;
     --black: #232323;
     --thinblack: #2c2c2c;
+    --dark: #3a3a3a;
     --grey: #bbbbbb;
     --almostwhite: #efefef;
     --border: #836be3;
     --purple: #5e3be8;
     --darkerpurple: #5333d2;
 }
+
 
 body {
     font-family: Helvetica, sans-serif;
@@ -46,7 +49,7 @@ button:hover {
 
 #sidemenu {
     position: relative;
-    overflow-x: scroll;
+    overflow-y: auto;
     justify-content: center;
     transition: ease 700ms;
     background-color: var(--thinblack);
@@ -101,7 +104,7 @@ button:hover {
 
 
 #menu {
-    background-color: #3a3a3a;
+    background-color: var(--dark);
     z-index: 2;
     vertical-align: middle;
     position: relative;
@@ -114,7 +117,7 @@ button:hover {
 
 
 #home-btn:hover {
-    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
+    filter: invert(42%) sepia(59%) saturate(935%) hue-rotate(216deg) brightness(97%) contrast(84%);
 }
 
 
@@ -131,7 +134,7 @@ button:hover {
 }
 
 #list-button:hover {
-    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
+    filter: invert(42%) sepia(59%) saturate(935%) hue-rotate(216deg) brightness(97%) contrast(84%);
 }
 
 #presets-wrap button,
@@ -436,7 +439,6 @@ button:hover {
 #edit-btn {
     filter: invert(75%) sepia(0%) saturate(0%) hue-rotate(166deg) brightness(98%) contrast(82%);
     position: absolute;
-    cursor: pointer;
     right: 10px;
     top: 60px;
     height: 40px;
@@ -717,19 +719,8 @@ button:hover {
 
 /* --SIDE MENU OBJECT END-- */
 
-/* --SETTINGS-- */
+/* --SETTINGS SIDEBAR-- */
 
-
-#settings {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    position: absolute;
-    display: none;
-    opacity: 1;
-    background-color: var(--black);
-    z-index: 8;
-}
 
 
 
@@ -744,7 +735,8 @@ button:hover {
 #sidebar {
     min-width: 300px;
     width: 30vw;
-    height: 100vh;
+    display: inline-block;
+    height: 100%;
     background: var(--thinblack);
     color: var(--almostwhite);
     transition: all 0.3s;
@@ -752,6 +744,7 @@ button:hover {
 
 #sidebar .sidebar-header {
     padding: 20px;
+    color: var(--grey);
     font-size: 20px;
     background: #333232;
 }
@@ -822,7 +815,7 @@ button:hover {
 }
 
 #settings-exit-btn:hover {
-    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
+    filter: invert(12%) sepia(74%) saturate(4881%) hue-rotate(351deg) brightness(100%) contrast(106%);
 }
 
 
@@ -839,11 +832,42 @@ button:hover {
 }
 
 #settings-button:hover {
-    filter: invert(90%) sepia(98%) saturate(7%) hue-rotate(301deg) brightness(112%) contrast(87%);
+    filter: invert(42%) sepia(59%) saturate(935%) hue-rotate(216deg) brightness(97%) contrast(84%);
 }
 
 
-/* --SETTINGS END-- */
+/* --SETTINGS SIDEBAR END-- */
+
+/* --SETTINGS CONTENT-- */
+
+
+#settings {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    display: none;
+    opacity: 1;
+    background-color: var(--black);
+    z-index: 8;
+}
+
+
+
+#settings-content{
+    width: auto;
+    color: var(--grey);
+    flex-grow: 1;
+}
+
+#settings-content h1 {
+
+    display: inline-block;
+    margin: 0 20px;
+}
+
+
+/* --SETTINGS CONTENT END-- */
 
 /* --MEDIA-- */
 
@@ -862,7 +886,7 @@ button:hover {
 
     #settings-button {
         top: -25%;
-    }
+    }R
 
     #home-btn {
         top: 12%;
@@ -875,7 +899,6 @@ button:hover {
         top: 75px !important;
     }
 }
-
 
 .center {
     text-align: center;
