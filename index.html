@@ -39,12 +39,12 @@
 
         <div id="menu">
             <div id="presets-wrap">
-            <img id="home-btn" src="icons/home.png" alt="home-btn">
-            <button class="presets" id="preset1">preset 1</button>
-            <button class="presets" id="preset2">preset 2</button>
-            <button class="presets" id="preset3">preset 3</button>
-            <button class="presets" id="preset4">preset 4</button>
-            <img id="reset-btn" src="icons/reset.svg" alt="reset-btn">
+                <img id="home-btn" src="icons/home.png" alt="home-btn">
+                <button class="presets" id="preset1">preset 1</button>
+                <button class="presets" id="preset2">preset 2</button>
+                <button class="presets" id="preset3">preset 3</button>
+                <button class="presets" id="preset4">preset 4</button>
+                <img id="reset-btn" src="icons/reset.svg" alt="reset-btn">
             </div>
 
             <label>
@@ -114,11 +114,11 @@
         <img id="settings-exit-btn" src="icons/x.svg" alt="exit-btn" onclick="closeSettings()">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3 style="    margin-left: 30px;">Settings</h3>
+                <h2 style="margin-left: 30px;">Settings</h2>
             </div>
 
             <ul class="list-unstyled components">
-                <p id="list-item1" class="settings-menu-item">Appearance</p>
+                <p id="list-item1" class="settings-menu-item active">Appearance</p>
                 <br>
                 <p id="list-item2" class="settings-menu-item">About</p>
                 <br>
@@ -129,7 +129,9 @@
                 <p id="list-item5" class="settings-menu-item">Contact</p>
             </ul>
         </nav>
-        <div id="settings-content"></div>
+        <div id="settings-content">
+            <h1 id="header-settings">Appearance</h1>
+        </div>
     </div>
     <script src="JS/Presets.js"></script>
 </body>
