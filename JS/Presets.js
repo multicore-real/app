@@ -243,6 +243,7 @@ preset4.click(function () {
 
 
 $("#list-item1").click(function () {
+    $("#header-settings").html($("#list-item1").html())
     if ($("#list-item1").hasClass("active")) {
         $('.settings-menu-item').removeClass('active')
     } else {
@@ -251,6 +252,7 @@ $("#list-item1").click(function () {
     }
 })
 $("#list-item2").click(function () {
+    $("#header-settings").html($("#list-item2").html())
     if ($("#list-item2").hasClass("active")) {
         $('.settings-menu-item').removeClass('active')
     } else {
@@ -259,6 +261,7 @@ $("#list-item2").click(function () {
     }
 })
 $("#list-item3").click(function () {
+    $("#header-settings").html($("#list-item3").html())
     if ($("#list-item3").hasClass("active")) {
         $('.settings-menu-item').removeClass('active')
     } else {
@@ -267,6 +270,7 @@ $("#list-item3").click(function () {
     }
 })
 $("#list-item4").click(function () {
+    $("#header-settings").html($("#list-item4").html())
     if ($("#list-item4").hasClass("active")) {
         $('.settings-menu-item').removeClass('active')
     } else {
@@ -275,6 +279,7 @@ $("#list-item4").click(function () {
     }
 })
 $("#list-item5").click(function () {
+    $("#header-settings").html($("#list-item5").html())
     if ($("#list-item5").hasClass("active")) {
         $('.settings-menu-item').removeClass('active')
     } else {
