@@ -1,8 +1,10 @@
+
 :root {
     color-scheme: dark light;
     --black: #232323;
     --thinblack: #2c2c2c;
     --dark: #3a3a3a;
+    --text-grey: #bbbbbb;
     --grey: #bbbbbb;
     --almostwhite: #efefef;
     --border: #836be3;
@@ -27,7 +29,7 @@ body {
 
 ::placeholder {
     opacity: 1;
-    color: var(--grey);
+    color: var(--text-grey);
 }
 
 button:hover {
@@ -81,7 +83,7 @@ button:hover {
 }
 
 #chosep {
-    color: var(--grey);
+    color: var(--text-grey);
 }
 
 /* --SIDE MENU END-- */
@@ -151,7 +153,7 @@ button:hover {
     padding: 0 15px 0 15px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     margin: 0;
     transition: all 0.3s;
 }
@@ -159,7 +161,7 @@ button:hover {
 
 .presets{
     font-size: 17px;
-    color: var(--grey);
+    color: var(--text-grey);
     font-family: Helvetica, sans-serif;
     border: none;
     cursor: pointer;
@@ -218,7 +220,7 @@ button:hover {
     font-weight: 300;
     margin: -40px auto;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     text-align: center;
     background-color: transparent;
     border: none;
@@ -269,7 +271,7 @@ button:hover {
     font-size: 25px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     text-align: center;
     background-color: var(--black);
     border: 3px solid black;
@@ -309,7 +311,7 @@ button:hover {
 #done-btn {
     font-size: 27px;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     margin-top: 20vh;
     transition: ease-in 0.1s;
     border: solid 3px var(--purple);
@@ -364,7 +366,7 @@ button:hover {
     text-align: center;
     background-color: var(--black);
     border: none;
-    color: var(--grey);
+    color: var(--text-grey);
     left: 0;
     right: 0;
     top: 0;
@@ -382,7 +384,7 @@ button:hover {
 #done-btn-reset {
     font-size: 20px;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     transition: ease-in 0.1s;
     border: solid 3px var(--purple);
     background-color: var(--purple);
@@ -402,7 +404,7 @@ button:hover {
 #done-btn-reset-no {
     font-size: 20px;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     border: none;
     background-color: transparent;
     border-radius: 10px;
@@ -473,7 +475,7 @@ button:hover {
 
 #editing-text {
     display: inline-block;
-    color: var(--grey);
+    color: var(--text-grey);
     font-size: 20px;
     font-weight: 400;
     vertical-align: middle;
@@ -551,7 +553,8 @@ button:hover {
     left: 200px;
     height: calc(100vh - 50px);
     position: fixed;
-    display: inline;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -574,16 +577,22 @@ button:hover {
     user-select: none; /* Standard */
     z-index: 3 !important;
     cursor: pointer;
-    display: inline-block;
     position: relative;
     padding: 0;
     background-color: var(--black);
     width: 150px;
+    height: 138px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 1em rgba(0, 0, 0, 0.5);
 }
-
+#left-side-settings details > summary {
+    list-style: none;
+    width: fit-content;
+}
+#left-side-settings details > summary::-webkit-details-marker {
+    display: none;
+}
 
 
 .color-block-canvas {
@@ -614,21 +623,60 @@ button:hover {
 
 
 .hex-canvas {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
     cursor: initial;
     font-size: 19px;
     margin: 10px 0 5px 0;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     text-align: center;
     background-color: transparent;
     border: none;
 }
 
+
+/* --BORDER BOX-- */
+.resizable-box{
+    z-index: 4;
+    background-color: rgba(115, 97, 97, 0);
+    display: inline-block;
+    position: absolute;
+    height: 100px;
+    width: 400px;
+    resize: both;
+    overflow: scroll;
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+.resizable-box fieldset{
+    border: dashed 4px var(--grey);
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: 4;
+}
+
+.resizable-box-header {
+    text-align: center;
+}
+
+
+.box-dragger {
+    z-index: 5;
+    width: 200px;
+    display: inline-block;
+    height: 0;
+    padding-top: 20px;
+    border: white solid;
+    position: absolute;
+    background-color: #442d2d;
+}
+/* --BORDER BOX END-- */
 
 /* --BACKGROUND OBJECT END-- */
 
@@ -645,7 +693,7 @@ button:hover {
     font-size: 19px;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     text-align: center;
     background-color: transparent;
     border: none;
@@ -689,7 +737,7 @@ button:hover {
     margin: 10px 0 0 0;
     font-weight: 300;
     font-family: Helvetica, sans-serif;
-    color: var(--grey);
+    color: var(--text-grey);
     text-align: center;
     background-color: transparent;
     border: none;
@@ -733,7 +781,7 @@ button:hover {
 }
 
 #sidebar {
-    min-width: 300px;
+    float: left;
     width: 30vw;
     display: inline-block;
     height: 100%;
@@ -744,7 +792,7 @@ button:hover {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    color: var(--grey);
+    color: var(--text-grey);
     font-size: 20px;
     background: #333232;
 }
@@ -852,20 +900,176 @@ button:hover {
     z-index: 8;
 }
 
-
-
 #settings-content{
-    width: auto;
-    color: var(--grey);
+    margin-left: 4vw;
+    width: 66vw;
+    color: var(--text-grey);
     flex-grow: 1;
+    z-index: 9;
+    float: left;
 }
+
 
 #settings-content h1 {
-
     display: inline-block;
-    margin: 0 20px;
+    width: 100%;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    margin-left: -10px;
+    margin-bottom: 0;
+    border-bottom: 2px solid #2f2f2f
 }
 
+
+.information-settings{
+    font-weight: bold;
+    font-family: "DIN Alternate", "sora semibold", serif;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 100%;
+}
+
+#left-side-settings {
+    text-align: left;
+    width: calc(33vw - 20px);
+    display: inline-block;
+    float: left;
+    padding-right: 20px;
+}
+
+
+#right-side-settings {
+    text-align: center;
+    width: 33vw;
+    display: inline-block;
+    float: left;
+}
+
+
+#color-div-preset {
+    margin: 50px;
+    transform: scale(1.5);
+    filter: drop-shadow( 0 0 0.5em rgba(0, 0, 0, 0.2));
+    display: inline-block;
+}
+
+.undeline {
+    padding-bottom: 30px;
+    padding-left: 10px;
+    margin-left: -10px;
+    margin-top: 30px;
+    border-bottom: 2px solid #2f2f2f
+}
+
+
+
+/* --ON OFF BUTTON-- */
+
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, ".SFNSText-Regular", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+}
+
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle-switch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 58px;
+    height: 32px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+.toggle-switch:before, .toggle-switch:after {
+    content: "";
+}
+.toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.toggle-checkbox:checked + .toggle-switch {
+    background: #56c080;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+    left: 30px;
+}
+
+.toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+}
+
+
+
+
+
+.color_input_settings {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    height: 50px;
+    aspect-ratio: 2;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.color_input_settings::-webkit-color-swatch {
+    border: #1e1e1e solid 3px;
+    border-radius: 10px;
+}
+
+
+
+
+#background-color-reset {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 30px;
+    vertical-align: center;
+    filter: invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#background-color-reset:hover {
+    transform: rotate(180deg);
+    filter: invert(42%) sepia(59%) saturate(935%) hue-rotate(216deg) brightness(97%) contrast(84%)
+}
+
+/* --ON OFF BUTTON END-- */
 
 /* --SETTINGS CONTENT END-- */
 
@@ -886,7 +1090,7 @@ button:hover {
 
     #settings-button {
         top: -25%;
-    }R
+    }
 
     #home-btn {
         top: 12%;
