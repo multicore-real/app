@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ENG">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette Bank</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+            integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/block_creation.js"></script>
+    <script src="JS/dragElement.js"></script>
+
+</head>
+<body>
+    <div id="content">
+        <div id="color-maker">
+            <img id="exit-btn-maker" src="icons/x.svg" alt="exit-btn" onclick="$('#color-maker').css('display', 'none')">
+            <label for="color-block-maker">
+                <input id="color-block-maker" value="#585757" type="color">
+            </label>
+            <br>
+            <label for="color-hex-maker">
+                <input placeholder="#ffffffff" spellcheck="false" value="#" maxlength="7" id="color-hex-maker">
+            </label>
+            <br>
+            <button id="done-btn">Done</button>
+        </div>
+        <div id="reset-error">
+            <img id="exit-btn-reset" src="icons/x.svg" alt="exit-btn" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'})">
+            <h2 class="center" style="margin-top: 10%; font-weight: 300">Are you sure you want to reset this preset?</h2>
+            <br>
+            <button id="done-btn-reset-no" onclick="$('#reset-error').css('display', 'none'); $('.overlay').css({'display': 'none', 'opacity': '0'});">Cancel</button>
+            <button id="done-btn-reset" onclick="resetPreset(); $('.overlay').css({'display': 'none', 'opacity': '0'})">Reset</button>
+        </div>
+
+        <div id="menu">
+            <div id="presets-wrap">
+                <img id="home-btn" src="icons/home.png" alt="home-btn">
+                <button class="presets" id="preset1">preset 1</button>
+                <button class="presets" id="preset2">preset 2</button>
+                <button class="presets" id="preset3">preset 3</button>
+                <button class="presets" id="preset4">preset 4</button>
+                <img id="reset-btn" src="icons/reset.svg" alt="reset-btn">
+            </div>
+
+            <label>
+                <input class="presetname" placeholder="Text" spellcheck="false" type="text" maxlength="15">
+            </label>
+            <img id="settings-button" src="icons/settings.svg" alt="settings-btn">
+            <img id="list-button" src="icons/list.svg" alt="list-btn">
+        </div>
+        <div id="sidemenu">
+            <div class="center">
+                <div id="preset1-color-div" class="center presets-color-div">
+                    <div id="color-wrap1">
+                    </div>
+                </div>
+                <div id="preset2-color-div" class="center presets-color-div">
+                    <div id="color-wrap2">
+                    </div>
+                </div>
+                <div id="preset3-color-div" class="center presets-color-div">
+                    <div id="color-wrap3">
+                    </div>
+                </div>
+                <div id="preset4-color-div" class="center presets-color-div">
+                    <div id="color-wrap4">
+                    </div>
+                </div>
+                <button id="add-btn"><img src="icons/pluss.svg" alt="add-btn"></button>
+                <p id="chosep">chose preset</p>
+            </div>
+        </div>
+        <img id="edit-btn" src="icons/edit.svg" alt="edit-btn">
+
+        <div id="editing-wrapper">
+            <div id="editing-div">
+                <p id="editing-text">You can now edit and drag colors</p>
+                <img id="exit-btn" src="icons/x.svg" alt="exit-btn" onclick="$('#editing-wrapper').css('opacity', '0')" >
+            </div>
+        </div>
+
+        <div id="copied-wrapper">
+            <div id="copied-div" role="alert">
+                <p id="copied-text">Successfully copied</p>
+            </div>
+        </div>
+
+        <div id="background-div1" class="background-div presets-color-div">
+            <div id="background1" class="background">
+                <div class="box-dragger" id="2314321343" onmouseenter="if (edit === 1) {findID(this)}">
+                    <div class="resizable-box 2314321343" id="21321123">
+                        <fieldset onmousedown="stopDrag(this.closest('.box-dragger'));">
+                            <legend class="resizable-box-header">
+                                <label>
+                                    <input placeholder="Text" spellcheck="false"  type="text" maxlength="30">
+                                </label>
+                            </legend>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="background-div2" class="background-div presets-color-div">
+            <div id="background2" class="background">
+            </div>
+        </div>
+        <div id="background-div3" class="background-div presets-color-div">
+            <div id="background3" class="background">
+            </div>
+        </div>
+        <div id="background-div4" class="background-div presets-color-div">
+            <div id="background4" class="background">
+            </div>
+        </div>
+        <div id="backgroundHide" class="background">
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <div id="settings">
+        <img id="settings-exit-btn" src="icons/x.svg" alt="exit-btn" onclick="closeSettings()">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2 style="">Settings</h2>
+            </div>
+            <ul class="list-unstyled components">
+                <p id="list-item1" class="settings-menu-item active">Appearance</p>
+                <br>
+                <p id="list-item2" class="settings-menu-item">About</p>
+                <br>
+                <p id="list-item3" class="settings-menu-item">Pages</p>
+                <br>
+                <p id="list-item4" class="settings-menu-item">Portfolio</p>
+                <br>
+                <p id="list-item5" class="settings-menu-item">Contact</p>
+            </ul>
+        </nav>
+        <div id="settings-content">
+            <h1 class="appearance" id="header-settings">Appearance</h1>
+            <div class="appearance settings-groups" >
+                <div id="left-side-settings">
+                    <div class="undeline">
+                        <label class="toggle">
+                            <input id="background-color-settings" class="color_input_settings" style="vertical-align: middle;" type="color" onchange="background_color()">
+                            <span class="toggle-label information-settings">Background color</span>
+                        </label>
+                        <img id="background-color-reset" src="icons/reset.svg">
+                    </div>
+                    <div class="undeline">
+                        <label class="toggle">
+                            <input id="inner-shadow-check" class="toggle-checkbox" type="checkbox" checked onclick="inner_shadow()">
+                            <div class="toggle-switch"></div>
+                            <span class="toggle-label information-settings">Inner shadow</span>
+                        </label>
+                    </div>
+                    <div class="undeline">
+                        <details id="border-detail">
+                            <summary>
+                                <label class="toggle">
+                                    <input id="border-check" class="toggle-checkbox" type="checkbox" onclick="border_check();">
+                                    <div class="toggle-switch"></div>
+                                    <span class="toggle-label information-settings">Border</span>
+                                </label>
+                            </summary>
+                            <div style="margin-top: 25px;">
+                                <label for="color-border">
+                                    <input id="color-border" class="color_input_settings" style="vertical-align: middle;" type="color" onchange="border_color();">
+                                    <span class="toggle-label information-settings">Border color</span>
+                                </label>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div id="right-side-settings">
+                    <div class="color-canvas-div" id="color-div-preset">
+                        <label>
+                            <input value="" maxlength="10" readonly placeholder="Name" style="cursor: initial" class="color-side-input">
+                        </label>
+                        <br>
+                        <div class="color-block-canvas" style="background-color: rgb(144, 35, 35);"></div>
+                        <p class="hex-canvas">#ffffffff</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="JS/Presets.js"></script>
+    <script src="JS/settings.js"></script>
+</body>
+</html>
