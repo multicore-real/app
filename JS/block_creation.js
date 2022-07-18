@@ -40,7 +40,7 @@ function doneclick() {
                     "        </div>")
 
                 $("#background1").append(" " +
-                    "         <div class=\'color-canvas-div " + colorp1[colorp1.length - 1].deleteId + "\' id=\'" + colorp1[colorp1.length - 1].id3 + "\' onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                    "         <div class=\'color-canvas-div " + colorp1[colorp1.length - 1].deleteId + "\' id=\'" + colorp1[colorp1.length - 1].id3 + "\' onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                     "            <label>\n" +
                     "                <input maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + colorp1[colorp1.length - 1].name + "\'>\n" +
                     "            </label>\n" +
@@ -86,7 +86,7 @@ function doneclick() {
                     "        </div>")
 
                 $("#background2").append(" " +
-                    "         <div class=\'color-canvas-div " + colorp2[colorp2.length - 1].deleteId + "\' id=\'" + colorp2[colorp2.length - 1].id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                    "         <div class=\'color-canvas-div " + colorp2[colorp2.length - 1].deleteId + "\' id=\'" + colorp2[colorp2.length - 1].id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                     "            <label>\n" +
                     "                <input maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + colorp2[colorp2.length - 1].name + "\'>\n" +
                     "            </label>\n" +
@@ -133,7 +133,7 @@ function doneclick() {
                     "        </div>")
 
                 $("#background3").append(" " +
-                    "         <div class=\'color-canvas-div " + colorp3[colorp3.length - 1].deleteId + "\' id=\'" + colorp3[colorp3.length - 1].id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                    "         <div class=\'color-canvas-div " + colorp3[colorp3.length - 1].deleteId + "\' id=\'" + colorp3[colorp3.length - 1].id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                     "            <label>\n" +
                     "                <input maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + colorp3[colorp3.length - 1].name + "\'>\n" +
                     "            </label>\n" +
@@ -181,7 +181,7 @@ function doneclick() {
                     "        </div>")
 
                 $("#background4").append("" +
-                    "         <div class=\'color-canvas-div " + colorp4[colorp4.length - 1].deleteId + "\' id=\'" + colorp4[colorp4.length - 1].id3 + "\' onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                    "         <div class=\'color-canvas-div " + colorp4[colorp4.length - 1].deleteId + "\' id=\'" + colorp4[colorp4.length - 1].id3 + "\' onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\'  onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                     "            <label>\n" +
                     "                <input maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + colorp4[colorp4.length - 1].name + "\'>\n" +
                     "                <br>\n" +
@@ -293,7 +293,7 @@ window.onload = function () {
                 "        </div>")
 
             $("#background1").append(" " +
-                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\' onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\' onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + item.name + "\'>\n" +
                 "            </label>\n" +
@@ -321,7 +321,7 @@ window.onload = function () {
                 "        </div>")
 
             $("#background2").append(" " +
-                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\' onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this)\' onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + item.name + "\'>\n" +
                 "            </label>\n" +
@@ -352,7 +352,7 @@ window.onload = function () {
                 "        </div>")
 
             $("#background3").append(" " +
-                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this);\'  onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this);\'  onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + item.name + "\'>\n" +
                 "            </label>\n" +
@@ -380,7 +380,7 @@ window.onload = function () {
                 "        </div>")
 
             $("#background4").append(" " +
-                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this);\'  onmouseenter=\'findID(this);\' onmousedown=\'clicking(this);\'>\n" +
+                "         <div class=\'color-canvas-div " + item.deleteId + "\' id=\'" + item.id3 + "\'  onmouseup=\'mup(this); copy(this);\' onmouseleave=\'mup(this);\'  onmouseenter=\'if (edit === 1) {findID(this)}else {stopDrag(this)}\' onmousedown=\'clicking(this);\'>\n" +
                 "            <label>\n" +
                 "                <input value=\'" + item.nameval + "\' maxlength=\"10\" readonly placeholder=\"Name\" style='cursor: initial' class=\'color-side-input " + item.name + "\'>\n" +
                 "            </label>\n" +

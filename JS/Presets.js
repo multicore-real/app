@@ -13,6 +13,7 @@ let sidemenu = $("#sidemenu");
 let addbtn = $("#add-btn");
 let colorhexmaker = $("#color-hex-maker");
 let colormaker = $("#color-maker");
+let once = true;
 let colorp1 = [];
 let colorp2 = [];
 let colorp3 = [];
@@ -305,6 +306,7 @@ $("#edit-btn").click(function editingF() {
             $(".color-canvas-div").css("cursor", "move")
             $('#editing-wrapper').css("opacity", "1")
             edit = 1
+            $(".resizable-box").css("resize", "none")
         } else {
             if (edit === 1) {
                 editBtnP()
@@ -312,7 +314,7 @@ $("#edit-btn").click(function editingF() {
                 $("#edit-btn").css("filter", "invert(87%) sepia(0%) saturate(217%) hue-rotate(145deg) brightness(86%) contrast(95%)")
                 $(".color-canvas-div").css("cursor", "pointer")
                 edit = 0
-                stopDrag(document.getElementById("2314321343"));
+                $(".resizable-box").css("resize", "both")
             }
         }
     }

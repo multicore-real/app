@@ -635,16 +635,16 @@ button:hover {
 }
 
 
-/* --BORDER BOX-- */
+/* --GROUP BOX-- */
 .resizable-box{
-    z-index: 4;
+    z-index: 2;
     background-color: rgba(115, 97, 97, 0);
     display: inline-block;
     position: absolute;
     height: 100px;
     width: 400px;
     resize: both;
-    overflow: scroll;
+    overflow: hidden;
     padding: 0;
     margin: 0;
     min-width: 200px;
@@ -658,16 +658,17 @@ button:hover {
     height: 100%;
     padding: 0;
     margin: 0;
-    z-index: 4;
 }
 
-.resizable-box-header {
+.resizable-box-header,
+.resizable-box-header input{
+    text-transform: uppercase;
     text-align: center;
 }
 
 
+
 .box-dragger {
-    z-index: 5;
     width: 200px;
     display: inline-block;
     height: 0;
@@ -676,7 +677,7 @@ button:hover {
     position: absolute;
     background-color: #442d2d;
 }
-/* --BORDER BOX END-- */
+/* --GROUP BOX END-- */
 
 /* --BACKGROUND OBJECT END-- */
 
@@ -901,6 +902,7 @@ button:hover {
 }
 
 #settings-content{
+    overflow-y: scroll;
     margin-left: 4vw;
     width: 66vw;
     color: var(--text-grey);

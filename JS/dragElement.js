@@ -1,7 +1,7 @@
 function findID(e) {
     let element = document.getElementById(e.id)
+    element.children[0].style.resize = "none";
     if (edit === 1) {
-        element.children[0].style.resize = "none";
         if (x === 1) {
             element.drag = new DragElement(element, "background1")
         }
@@ -14,17 +14,14 @@ function findID(e) {
         if (x === 4) {
             element.drag = new DragElement(element, "background4")
         }
-    } else {
-        let new_element = element.cloneNode(true);
-        element.parentNode.replaceChild(new_element, element)
-        new_element.children[0].style.resize = "both";
     }
 }
 function stopDrag(e) {
-    let element = document.getElementById(e.id)
-    let new_element = element.cloneNode(true);
-    element.parentNode.replaceChild(new_element, element)
-    new_element.children[0].style.resize = "both";
+    if (edit === 0) {
+        let element = document.getElementById(e.id)
+        let new_element = element.cloneNode(true);
+        element.parentNode.replaceChild(new_element, element)
+    }
 }
 
 

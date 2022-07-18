@@ -30,8 +30,14 @@ function border_color () {
 }
 
 function background_color () {
-    localStorage.setItem("canvas-div-background-color", $("#background-color-settings").val())
-    $(".color-canvas-div").css("background-color", $("#background-color-settings").val())
+    if (localStorage.getItem("canvas-div-background-color")) {
+        localStorage.setItem("canvas-div-background-color", $("#background-color-settings").val())
+        $(".color-canvas-div").css("background-color", $("#background-color-settings").val())
+    }
+    else {
+        $(".color-canvas-div").css("background-color", "#232323")
+        $("#background-color-settings").val("#232323")
+    }
 }
 
 $("#background-color-reset").click( function () {

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="CSS/style.css">
     <script src="JS/block_creation.js"></script>
     <script src="JS/dragElement.js"></script>
-
 </head>
 <body>
     <div id="content">
@@ -94,15 +93,26 @@
 
         <div id="background-div1" class="background-div presets-color-div">
             <div id="background1" class="background">
-                <div class="box-dragger" id="2314321343" onmouseenter="if (edit === 1) {findID(this)}">
-                    <div class="resizable-box 2314321343" id="21321123">
-                        <fieldset onmousedown="stopDrag(this.closest('.box-dragger'));">
-                            <legend class="resizable-box-header">
-                                <label>
-                                    <input placeholder="Text" spellcheck="false"  type="text" maxlength="30">
-                                </label>
-                            </legend>
-                        </fieldset>
+                <div class="box-dragger-wrapper">
+                    <div class="box-dragger" id="2314321343" onmouseenter="
+                    if (edit === 1) {
+                        findID(this)
+                        once = false
+                    } else {
+                        if (once === false) {
+                            stopDragGroup(this);
+                            once = true
+                        }
+                    }">
+                        <div class="resizable-box 2314321343" id="21321123">
+                            <fieldset onmousedown="stopDragGroup(this.closest('.box-dragger'));">
+                                <legend class="resizable-box-header resize-class">
+                                    <label>
+                                        <input placeholder="Text" sellcheck="false" onkeydown="this.style.width = (this.value.length * 1.2) + 3 + 'ch';" type="text" maxlength="30">
+                                    </label>
+                                </legend>
+                            </fieldset>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,37 +155,39 @@
             <h1 class="appearance" id="header-settings">Appearance</h1>
             <div class="appearance settings-groups" >
                 <div id="left-side-settings">
-                    <div class="undeline">
-                        <label class="toggle">
-                            <input id="background-color-settings" class="color_input_settings" style="vertical-align: middle;" type="color" onchange="background_color()">
-                            <span class="toggle-label information-settings">Background color</span>
-                        </label>
-                        <img id="background-color-reset" src="icons/reset.svg">
-                    </div>
-                    <div class="undeline">
-                        <label class="toggle">
-                            <input id="inner-shadow-check" class="toggle-checkbox" type="checkbox" checked onclick="inner_shadow()">
-                            <div class="toggle-switch"></div>
-                            <span class="toggle-label information-settings">Inner shadow</span>
-                        </label>
-                    </div>
-                    <div class="undeline">
-                        <details id="border-detail">
-                            <summary>
-                                <label class="toggle">
-                                    <input id="border-check" class="toggle-checkbox" type="checkbox" onclick="border_check();">
-                                    <div class="toggle-switch"></div>
-                                    <span class="toggle-label information-settings">Border</span>
-                                </label>
-                            </summary>
-                            <div style="margin-top: 25px;">
-                                <label for="color-border">
-                                    <input id="color-border" class="color_input_settings" style="vertical-align: middle;" type="color" onchange="border_color();">
-                                    <span class="toggle-label information-settings">Border color</span>
-                                </label>
-                            </div>
-                        </details>
-                    </div>
+                    <li>
+                        <div class="undeline">
+                            <label class="toggle">
+                                <input id="background-color-settings" class="color_input_settings" style="vertical-align: middle;" type="color" onchange="background_color()">
+                                <span class="toggle-label information-settings">Background color</span>
+                            </label>
+                            <img id="background-color-reset" src="icons/reset.svg">
+                        </div>
+                        <div class="undeline">
+                            <label class="toggle">
+                                <input id="inner-shadow-check" class="toggle-checkbox" type="checkbox" checked onclick="inner_shadow()">
+                                <div class="toggle-switch"></div>
+                                <span class="toggle-label information-settings">Inner shadow</span>
+                            </label>
+                        </div>
+                        <div class="undeline">
+                            <details id="border-detail">
+                                <summary>
+                                    <label class="toggle">
+                                        <input id="border-check" class="toggle-checkbox" type="checkbox" onclick="border_check();">
+                                        <div class="toggle-switch"></div>
+                                        <span class="toggle-label information-settings">Border</span>
+                                    </label>
+                                </summary>
+                                <div style="margin-top: 25px;">
+                                    <label for="color-border">
+                                        <input id="color-border" class="color_input_settings" style="vertical-align: middle;" type="color" onchange="border_color();">
+                                        <span class="toggle-label information-settings">Border color</span>
+                                    </label>
+                                </div>
+                            </details>
+                        </div>
+                    </li>
                 </div>
                 <div id="right-side-settings">
                     <div class="color-canvas-div" id="color-div-preset">
@@ -192,5 +204,6 @@
     </div>
     <script src="JS/Presets.js"></script>
     <script src="JS/settings.js"></script>
+    <script src="JS/Groups.js"></script>
 </body>
 </html>
